@@ -1,0 +1,159 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&subset=devanagari,latin-ext');
+/* #Primary
+================================================== */
+
+body{
+    font-family: 'Poppins', sans-serif;
+	font-size: 16px;
+	line-height: 24px;
+	font-weight: 400;
+	color: #212112;
+	background-position: center;
+	background-repeat: repeat;
+	background-size: 7%;
+	background-color: #fff;
+	overflow-x: hidden;
+    transition: all 200ms linear;
+}
+::selection {
+	color: #fff;
+	background-color: #8167a9;
+}
+::-moz-selection {
+	color: #fff;
+	background-color: #8167a9;
+}
+
+/* #Materi
+================================================== */s
+p {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.1em;
+    font-weight: 300;
+    line-height: 1.7em;
+    color: #999;
+}
+
+a, a:hover, a:focus {
+    color: inherit;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+#viewpdf {
+    height: 600px;
+    width : 80%;
+}
+
+.wrapper {
+    display: flex;
+    width: 100%;
+    align-items: stretch;
+}
+
+#sidebar {
+    min-width: 250px;
+    max-width: 250px;
+    min-height: 100vh;
+    background: #202C39;
+    color: #fff;
+    position: fixed;
+}
+
+#logo{
+    width: 150px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#sidebar .sidebar-header {
+    padding: 20px 0px;
+    background:#971b1b;
+}
+
+#sidebar ul p {
+    color: #fff;
+    padding: 10px;
+}
+
+#sidebar ul li a {
+    padding: 10px;
+    font-size: 1.1em;
+    display: block;
+}
+#sidebar ul li a:hover {
+    color: #202C39;
+    background: #fff;
+}
+
+#sidebar ul li.active > a, a[aria-expanded="true"] {
+    color: #fff;
+    background: #283845;
+}
+ul ul a {
+    font-size: 0.9em !important;
+    padding-left: 30px !important;
+    background: #283845;
+}
+
+/* #Navigation
+================================================== */
+.log-in{
+    height: 100vh;
+    background: #fff;
+}
+#aslab{
+    width: 700px;
+    position: absolute;
+    bottom: 0;
+}
+.form-container{
+    padding: 20px;
+    background-color:  #fff;
+    position: absolute;
+    border-radius: 10px;
+    right: 100px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.btn{
+    background:#971b1b;
+    border: none;
+}
+.btn:hover{
+    background: #FB3640;
+}
+.copyright{
+    position: absolute;
+    bottom: 0px;
+    right: 20px;
+}
+.panel-primary{
+    position: relative;
+    left: 40%;
+    display: flex;
+    flex-direction: column;
+    padding: 50px 50px;
+    /* background-color: red; */
+}
+
+@media (max-width: 768px) {
+    #sidebar {
+        margin-left: -250px;
+    }
+    #sidebar.active {
+        margin-left: 0;
+    }
+}
+
+@keyframes change{
+    0%{
+      background-position: 0 50%;
+    }
+    50%{
+      background-position: 100% 50%;
+    }
+    100%{
+      background-position: 0 50%;
+    }
+  }
