@@ -100,15 +100,16 @@ ul ul a {
 ================================================== */
 .log-in{
     height: 100vh;
-    background: #fff;
+    background: #E78276;
 }
+
 #aslab{
-    width: 700px;
+    width: 500px;
     position: absolute;
     bottom: 0;
 }
 .form-container{
-    padding: 20px;
+    padding: 50px;
     background-color:  #fff;
     position: absolute;
     border-radius: 10px;

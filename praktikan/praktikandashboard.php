@@ -24,19 +24,22 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
         <link href="assets/css/style.css" rel="stylesheet">
     </head>
-    <body class="hero-anime">
 
-    <div class="navigation-wrap bg-light start-header start-style">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <nav class="navbar navbar-expand-md navbar-light">	
-                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
-                        
-                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                            <ul class="navbar-nav ml-auto py-4 py-md-0">
+    <body class="hero-anime">
+    <div class="navigation-wrap start-header start-style">
+		<div class="container">
+			<div class="row">
+				<div class="col-12">
+					<nav class="navbar navbar-expand-md navbar-light">
+					
+						<a class="navbar-brand" href="https://front.codes/" target="_blank"><img src="assets/img/logo.png" alt=""></a>	
+						
+						<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+							<span class="navbar-toggler-icon"></span>
+						</button>
+						
+						<div class="collapse navbar-collapse" id="navbarSupportedContent">
+							<ul class="navbar-nav ml-auto py-4 py-md-0">
                                 <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
                                     <a class="nav-link" href="praktikandashboard.php">Dashboard</a>
                                 </li>
@@ -47,16 +50,16 @@
                                     <a class="nav-link" href="#">Asisten</a>
                                 </li>
                                 <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
-									<a class="nav-link" href="praktikanlogout.php?logout">Log Out</a>
-								</li>
-                            </ul>
-                        </div>
-                        
-                    </nav>		
-                </div>
-            </div>
-        </div>
-    </div>
+                                    <a class="nav-link" href="praktikanlogout.php?logout">Log Out</a>
+                                </li>
+							</ul>
+						</div>
+						
+					</nav>		
+				</div>
+			</div>
+		</div>
+	</div>
 
     <div class="section full-height">
         <div class="absolute-center">
@@ -74,26 +77,69 @@
         </div>
     </div>
 
-    <div class="section full-height">
+    <div class="section full-height jadwal">
+            <div class=judul_gambar>
+                <div class="judul">
+                    <h1>Jadwal</h1> 
+                    <h1>Kelompok <?php echo $userRow['praktikanKelompok'];?></h1>
+                </div>
+                <img src="assets/img/peep-46.png" class="peep-laptop">
+            </div>
+            <div class="col-md-4 tabel">
+            <table class="table table-borderless">
+                <thead>
+                    <tr>
+                        <th scope="col">Praktikum</th>
+                        <th scope="col">Tanggal</th>
+                        <th scope="col">Jam</th>
+                    </tr>
+                </thead>
+                <?php
+                    $result = mysqli_query($con, "SELECT * FROM `jadwalpraktikum` 
+                    WHERE EXISTS (SELECT 1 from praktikan where kelompok = praktikanKelompok)");
+                    while($jadwalpraktikum = mysqli_fetch_array($result)){
+                        echo "<tbody>";
+                            echo "<tr>";
+                            // echo "<td>" . $jadwalpraktikum['assist_NRP'] . "</td>";
+                            echo "<td>" . $jadwalpraktikum['praktikum'] . "</td>";
+                                echo "<td>" . $jadwalpraktikum['tanggal'] . "</td>";
+                                echo "<td>" . $jadwalpraktikum['jam'] . "</td>";  
+                    } 
+                            echo "</tr>";
+                        echo "</tbody>";              
+                echo "</table>";
+                ?>
+            </div>
+            <div class="col-md-4 tabel-2">
+            <table class="table table-borderless">
+                <thead>
+                    <tr>
+                        <th scope="col">Praktikum</th>
+                        <th scope="col">Tanggal</th>
+                        <th scope="col">Jam</th>
+                    </tr>
+                </thead>
+                <?php
+                    $result = mysqli_query($con, "SELECT * FROM `jadwalpraktikum` 
+                    WHERE EXISTS (SELECT 1 from praktikan where kelompok = praktikanKelompok)");
+                    while($jadwalpraktikum = mysqli_fetch_array($result)){
+                        echo "<tbody>";
+                            echo "<tr>";
+                            // echo "<td>" . $jadwalpraktikum['assist_NRP'] . "</td>";
+                            echo "<td>" . $jadwalpraktikum['praktikum'] . "</td>";
+                                echo "<td>" . $jadwalpraktikum['tanggal'] . "</td>";
+                                echo "<td>" . $jadwalpraktikum['jam'] . "</td>";  
+                    } 
+                            echo "</tr>";
+                        echo "</tbody>";              
+                echo "</table>";
+                ?>
+            </div>
     </div>
     <script src="assets/js/jquery.js"></script>
 
     <script>		
         (function($) { "use strict";
-
-        $(function() {
-            var header = $(".start-style");
-            $(window).scroll(function() {    
-                var scroll = $(window).scrollTop();
-            
-                if (scroll >= 10) {
-                    header.removeClass('start-style').addClass("scroll-on");
-                } else {
-                    header.removeClass("scroll-on").addClass('start-style');
-                }
-            });
-        });		
-            
         //Animation
 
         $(document).ready(function() {

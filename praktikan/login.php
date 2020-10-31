@@ -44,11 +44,12 @@ if (isset($_POST['login'])){
         <link href="assets/css/style.css" rel="stylesheet">
     </head>
     <body class="log-in">
-        <div class="title col-6">
+        <!-- <div class="title col-6">
             <h2>Log In Praktikan</h2>
             <hr/>
-        </div>
-        <div class="container form-container col-6">
+        </div> -->
+        <div class="peep"><img src="assets/img/peep-62.png" id="duduk"></div>
+        <div class="container form-container col-4">
             <div class="justify-content-center">
                 <form class="form" role="form" method="POST" accept-charset="UTF-8">
                     <div class="form-group">
@@ -65,11 +66,9 @@ if (isset($_POST['login'])){
             </div>		
             <p>Belum punya akun? <a href="signup.php">Sign Up</a></p>
         </div>		
-        <div class="copy col-4">
-            <p>B401&#169;2020</p> 
-            <p><a href="../assistant/asistenlogin.php">Asisten</a></p>
+        <div class="copy col-10">
+            <p class="b401">B401&#169;2020</p>
+            <p class="ml-md-4"><a href="../assistant/asistenlogin.php">Asisten</a></p>
         </div>
-        <img src="assets/img/naodkk.png" id="naodkk">
-    <script src="assets/js/jquery.js"></script>
     </body>
 </html>

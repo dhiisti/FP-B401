@@ -43,13 +43,14 @@ if (isset($_POST['signup'])) {
         <title>Sign Up</title>
         <!-- Bootstrap -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <link href="assets/css/style.css" rel="stylesheet">
     </head>
     <body class="log-in">
         <div class="container form-container col-6">
             <div class="justify-content-center">
                 <div class="">
-                    <h2>Sign Up Praktikan</h2>
+                    <h2>Registrasi</h2>
                     <hr/>
                 </div>
                 <form action="<?php $_PHP_SELF ?>" method="POST" accept-charset="utf-8" class="form" role="form">
@@ -78,11 +79,24 @@ if (isset($_POST['signup'])) {
                     <div class="form-group">
                         <label for="confirm_password">Confirm Password :</label>
                         <input type="password" name="confirm_password" value="" class="form-control input-lg" id="confirm_password" required/>
+                        <span id='message'></span>
                     </div>
                     <button type="submit" name="signup" id="signup" class="btn btn-primary" >Sign Up</button>
                 </form>
             </div>		
         </div>
-        <img src="assets/img/naodkk.png" id="naodkk">		
+        <img src="assets/img/4.png" style="position:absolute; bottom:-15px; left:120px;">
+        <script>
+            $('#confirm_password').on('keyup', function () {
+                if ($(this).val() == $('#password').val()) {
+                    $('#confirm_password').css('border-color', 'lime');
+                    $('#message').html('Matching').css('color', 'lime');
+                } 
+                else{
+                    $('#confirm_password').css('border-color', 'red');
+                    $('#message').html('Not Matching').css('color', 'red');
+                }
+            });
+        </script>
     </body>
 </html>
