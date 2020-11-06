@@ -4,7 +4,7 @@ include_once '../assets/conn/dbconnect.php';
 $id = $_POST['id'];
 // echo $appid;
 
-$delete = mysqli_query($con,"DELETE FROM assistantschedule WHERE scheduleId=$id");
+$delete = mysqli_query($con,"DELETE FROM assistantschedule WHERE id=$id");
 // if(isset($delete)) {
 //    echo "YES";
 // } else {

@@ -25,7 +25,8 @@ if (isset($_POST['login'])){
     }else{
         ?>
             <script type="text/javascript">
-                alert('Login Failed');
+                $('#inputPassword').css('border-color', 'red');
+                // alert('Login Failed');
             </script>
         <?php
     }
@@ -58,8 +59,9 @@ if (isset($_POST['login'])){
                         <small id="emailHelp" class="form-text">Masukan NRP tanpa 0 (ex: 72118)</small>
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputPassword1">Password</label>
-                        <input name="password" type="password" class="form-control" id="exampleInputPassword1" required>
+                        <label for="inputPassword1">Password</label>
+                        <input name="password" type="password" class="form-control" id="inputPassword" required>
+                        <span id='message'></span>
                     </div>
                     <button type="submit" name="login" class="btn btn-primary">Login</button>
                 </form>

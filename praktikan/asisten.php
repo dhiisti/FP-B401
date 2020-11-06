@@ -13,7 +13,7 @@
 
 <!DOCTYPE html>
 <html lang="en">
-    <head>
+<head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -23,9 +23,9 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
         <link href="assets/css/style.css" rel="stylesheet">
-    </head>
+</head>
+<body class="hero-anime">
 
-    <body class="hero-anime">
     <div class="navigation-wrap start-header start-style">
 		<div class="container">
 			<div class="row">
@@ -59,93 +59,63 @@
 				</div>
 			</div>
 		</div>
-	</div>
-
+    </div>
     <div class="section full-height">
         <div class="absolute-center">
             <div class="section">
                 <div class="container">
                     <div class="row">
                         <div class="col-12">
-                <h1><span>H</span><span>a</span><span>l</span><span>o</span><span>,</span>
-                <span>P</span><span>r</span><span>a</span><span>k</span><span>t</span><span>i</span><span>k</span><span>a</span><span>n</span></h1>
-                <p>Praktikum Rangkaian Digital B401</p>	
+                        <h2>Kelompok <?php echo $userRow['praktikanKelompok'];?> ,pilih asistenmu !</h2>
+                        <div class="form-group col-md-6">
+                            <label>NRP</label>
+                            <input class="form-control" type="text" id="nrp" name="nrp" onchange="showUser(this.value)"/>  
+                        </div>
                         </div>	
-                    </div>		
-                </div>		
+                    </div>	
+                </div>
+
+                    <script>
+                        function showUser(str){			
+                            if (str == "") {
+                                document.getElementById("txtHint").innerHTML = "No data to be shown";
+                                return;
+                            } else {
+                                if (window.XMLHttpRequest) {
+                                    // code for IE7+, Firefox, Chrome, Opera, Safari
+                                    xmlhttp = new XMLHttpRequest();
+                                } else {
+                                    // code for IE6, IE5
+                                    xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+                                }
+
+                            xmlhttp.onreadystatechange = function() {
+                                if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                                    document.getElementById("txtHint").innerHTML = xmlhttp.responseText;
+                                }
+                            };
+
+                            xmlhttp.open("GET","getschedule.php?q="+str,true);
+                            console.log(str);
+                            xmlhttp.send();
+
+                            }
+                        }
+                    </script>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xs-12 col-md-8">
+                                <div id="txtHint"></div>
+                            </div>
+                        </div>
+                    </div>
+	
             </div>
         </div>
     </div>
-
-    <div class="section full-height jadwal">
-            <div class=judul_gambar>
-                <div class="judul">
-                    <h1>Jadwal</h1> 
-                    <h1>Kelompok <?php echo $userRow['praktikanKelompok'];?></h1>
-                </div>
-                <img src="assets/img/peep-46.png" class="peep-laptop">
-            </div>
-            <div class="col-md-4 tabel">
-            <table class="table table-borderless">
-                <thead>
-                    <tr>
-                        <th scope="col">Praktikum</th>
-                        <th scope="col">Tanggal</th>
-                        <th scope="col">Jam</th>
-                    </tr>
-                </thead>
-                <?php
-                    $result = mysqli_query($con, "SELECT * FROM `jadwalpraktikum` 
-                    WHERE EXISTS (SELECT 1 from praktikan where kelompok = praktikanKelompok)");
-                    while($jadwalpraktikum = mysqli_fetch_array($result)){
-                        echo "<tbody>";
-                            echo "<tr>";
-                            // echo "<td>" . $jadwalpraktikum['assist_NRP'] . "</td>";
-                            echo "<td>" . $jadwalpraktikum['praktikum'] . "</td>";
-                                echo "<td>" . $jadwalpraktikum['tanggal'] . "</td>";
-                                echo "<td>" . $jadwalpraktikum['jam'] . "</td>";  
-                    } 
-                            echo "</tr>";
-                        echo "</tbody>";              
-                echo "</table>";
-                ?>
-            </div>
-            <div class="col-md-4 tabel-2">
-            <table class="table table-borderless">
-                <thead>
-                    <tr>
-                        <th scope="col">Praktikum</th>
-                        <th scope="col">Tanggal</th>
-                        <th scope="col">Jam</th>
-                    </tr>
-                </thead>
-                <?php
-                    $result = mysqli_query($con, "SELECT * FROM `jadwalpraktikum` 
-                    WHERE EXISTS (SELECT 1 from praktikan where kelompok = praktikanKelompok)");
-                    while($jadwalpraktikum = mysqli_fetch_array($result)){
-                        echo "<tbody>";
-                            echo "<tr>";
-                            // echo "<td>" . $jadwalpraktikum['assist_NRP'] . "</td>";
-                            echo "<td>" . $jadwalpraktikum['praktikum'] . "</td>";
-                                echo "<td>" . $jadwalpraktikum['tanggal'] . "</td>";
-                                echo "<td>" . $jadwalpraktikum['jam'] . "</td>";  
-                    } 
-                            echo "</tr>";
-                        echo "</tbody>";              
-                echo "</table>";
-                ?>
-            </div>
-    </div>
-    <script src="assets/js/jquery.js"></script>
-
     <script>		
         (function($) { "use strict";
-        //Animation
-
-        $(document).ready(function() {
-            $('body.hero-anime').removeClass('hero-anime');
-        });
-
+            
         //Menu On Hover
         $('body').on('mouseenter mouseleave','.nav-item',function(e){
                 if ($(window).width() > 750) {
@@ -155,7 +125,8 @@
                     },1);
                 }
         });	
+
         })(jQuery); 
 	</script>
-    </body>
+</body>
 </html>

@@ -48,7 +48,7 @@
                                     <a class="nav-link" href="materi.php">Materi</a>
                                 </li>
                                 <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
-                                    <a class="nav-link" href="#">Asisten</a>
+                                    <a class="nav-link" href="asisten.php">Asisten</a>
                                 </li>
                                 <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
                                     <a class="nav-link" href="praktikanlogout.php?logout">Log Out</a>
@@ -97,7 +97,7 @@
             <h1>Modul LAB 5 : Register, Synchronous Counter dan Asynchronous Counter</h1>
         <div class="col-12 viewpdf" id="pdf5"></div>
         </div>
-
+    </div>
     <script>		
         (function($) { "use strict";
             

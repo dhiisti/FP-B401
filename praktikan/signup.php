@@ -8,11 +8,11 @@ if (isset($_POST['signup'])) {
     $praktikanName = mysqli_real_escape_string($con,$_POST['praktikanName']);
     $praktikanEmail = mysqli_real_escape_string($con,$_POST['praktikanEmail']);
     $praktikanNRP = mysqli_real_escape_string($con,$_POST['praktikanNRP']);
-    $praktikanKelompok = mysqli_real_escape_string($con,$_POST['$praktikanKelompok']);
+    $praktikanKelompok = mysqli_real_escape_string($con,$_POST['praktikanKelompok']);
     $password = mysqli_real_escape_string($con,$_POST['password']);
 
     //INSERT
-    $query = " INSERT INTO praktikan (  praktikanNRP, password, praktikanName, praktikanKelompok, praktikanEmail )
+    $query = " INSERT INTO praktikan ( praktikanNRP, password, praktikanName, praktikanKelompok, praktikanEmail )
     VALUES ( '$praktikanNRP', '$password', '$praktikanName', '$praktikanKelompok', '$praktikanEmail' ) ";
     $result = mysqli_query($con, $query);
 
@@ -50,10 +50,14 @@ if (isset($_POST['signup'])) {
         <div class="container form-container col-6">
             <div class="justify-content-center">
                 <div class="">
-                    <h2>Registrasi</h2>
+                    <h2><img src="assets/img/4.png" 
+                             style="width: 70px;height:70px;
+	                                object-fit:cover;
+	                                border:5px solid #E8E1E1;
+	                                border-radius:50%;">Registrasi</h2>
                     <hr/>
                 </div>
-                <form action="<?php $_PHP_SELF ?>" method="POST" accept-charset="utf-8" class="form" role="form">
+                <form action="<?php $_PHP_SELF ?>" method="POST" accept-charset="utf-8" class="form" role="form" name="form1">
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="inputName">Nama : </label>
@@ -74,29 +78,39 @@ if (isset($_POST['signup'])) {
                     </div>
                     <div class="form-group">
                         <label for="password">Password :</label>
-                        <input type="password" name="password" value="" class="form-control input-lg" id="password" required/>
+                        <input type="password" name="password" value="" class="form-control input-lg" id="password" required />
+                        <span id='message'></span>
                     </div>
                     <div class="form-group">
                         <label for="confirm_password">Confirm Password :</label>
                         <input type="password" name="confirm_password" value="" class="form-control input-lg" id="confirm_password" required/>
-                        <span id='message'></span>
+                        <span id='message2'></span>
                     </div>
-                    <button type="submit" name="signup" id="signup" class="btn btn-primary" >Sign Up</button>
+                    <button type="submit" name="signup" id="signup" class="btn btn-primary">Sign Up</button>
                 </form>
             </div>		
         </div>
-        <img src="assets/img/4.png" style="position:absolute; bottom:-15px; left:120px;">
         <script>
+            $('#password').on('keyup', function(){
+                var passw=  /^[A-Za-z]\w{7,14}$/;
+                if($(this).val().match(passw)) { 
+                    $('#message').html('Strong Enough').css('color', 'lime');
+                }else{ 
+                    $('#message').html('Not Strong Enough').css('color', 'red');
+                }
+            });
+
             $('#confirm_password').on('keyup', function () {
                 if ($(this).val() == $('#password').val()) {
                     $('#confirm_password').css('border-color', 'lime');
-                    $('#message').html('Matching').css('color', 'lime');
+                    $('#message2').html('Match').css('color', 'lime');
                 } 
                 else{
                     $('#confirm_password').css('border-color', 'red');
-                    $('#message').html('Not Matching').css('color', 'red');
+                    $('#message2').html('Not Match').css('color', 'red');
                 }
             });
-        </script>
+
+        </script>s
     </body>
 </html>

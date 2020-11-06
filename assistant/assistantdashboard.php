@@ -50,6 +50,8 @@
         <meta name="description" content="">
         <meta name="author" content="">
         <title>Welcome <?php echo $userRow['assistantFirstName'];?> <?php echo $userRow['assistantLastName'];?></title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
         <link href="assets/css/style.css" rel="stylesheet">
@@ -57,7 +59,7 @@
     
     <body>
 
-        <div class="wrapper">
+    <div class="wrapper ">
         <!-- Sidebar -->
         <nav id="sidebar">
             <div class="sidebar-header">
@@ -67,36 +69,31 @@
             <ul class="list-unstyled components">
                 <p>Halo, <?php echo $userRow['assistantFirstName'];?> <?php echo $userRow['assistantLastName'];?> </p>
                 <li>
-                    <a href="addschedule.php">Tambah Jadwal</a>
+                    <a href="addschedule.php"><i class="far fa-calendar-plus mr-md-4" ></i>Tambah Jadwal</a>
                 </li>
-                <li class="active">
-                    <a href="assistantdashboard.php">Jadwal Asistensi</a>
+                <li  class="active">
+                    <a href="assistantdashboard.php"><i class="far fa-calendar-alt mr-md-4"></i>Jadwal Asistensi</a>
                 </li>
                 <li>
-                    <a href="asistenlogout.php?logout">Log Out</a>
+                    <a href="asistenlogout.php?logout"><i class="fas fa-power-off mr-md-4"></i>Log Out</a>
                 </li>
             </ul>
         </nav>
 
-        <!-- Page Content -->
-        <div id="content">
-            <div class="container-fluid">
-                <div class="panel panel-primary">
-                <h2>Halo, <?php echo $userRow['assistantFirstName'];?> <?php echo $userRow['assistantLastName'];?> </h2>
-                </div> 
-            </div>
-            </div>
-        </div>  
-
-    <script src="../praktikan/assets/js/jquery.js"></script>
-    <!-- jQuery CDN - Slim version (=without AJAX) -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <!-- Popper.JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
-    <!-- Bootstrap JS -->
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
-    <!-- jQuery Custom Scroller CDN -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
+        <div class="panel panel-primary col-8" 
+                    style="
+                    position: relative;
+                    display: flex;
+                    left: 17%;
+                    flex-direction: column;
+                    padding: 50px 50px;">
+            
+                        <!-- panel heading starat -->
+                        <h2>Halo, <?php echo $userRow['assistantFirstName'];?> <?php echo $userRow['assistantLastName'];?> </h2>
+                        <!-- panel heading end -->
+        </div> 
+                <!-- s -->
+    </div>  
 
 <script type="text/javascript">
     $(function() {

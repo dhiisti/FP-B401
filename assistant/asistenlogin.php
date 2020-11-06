@@ -25,7 +25,9 @@ if (isset($_POST['login'])) {
     } else {
         ?>
             <script type="text/javascript">
-                alert("Login Failed");
+                // alert("Login Failed");
+                $('#message').html('Not Matching').css('color', 'red');
+                // $('#inputPassword').css('border-color', 'red');
             </script>
         <?php
     }
@@ -55,6 +57,7 @@ if (isset($_POST['login'])) {
                     <div class="form-group">
                         <label for="inputPassword">Password : </label>
                         <input name="password" type="password" class="form-control" id="inputPassword" required>
+                        <span id='message'></span>
                     </div>
                     <button type="submit" name="login" class="btn btn-primary">Login</button>
                 </form>
