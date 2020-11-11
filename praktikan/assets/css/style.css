@@ -413,6 +413,9 @@ h1 span:nth-child(15){
 	bottom: 100px;
 }
 
+.btn:hover{
+    background: #FB3640;
+}
 /* #Media
 ================================================== */
 

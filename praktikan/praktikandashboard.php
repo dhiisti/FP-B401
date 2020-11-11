@@ -95,8 +95,9 @@
                     </tr>
                 </thead>
                 <?php
+                    $kelompok = $userRow['praktikanKelompok'];
                     $result = mysqli_query($con, "SELECT * FROM `jadwalpraktikum` 
-                    WHERE EXISTS (SELECT 1 from praktikan where kelompok = praktikanKelompok)");
+                    WHERE kelompok = '$kelompok'");
                     while($jadwalpraktikum = mysqli_fetch_array($result)){
                         echo "<tbody>";
                             echo "<tr>";
@@ -121,7 +122,7 @@
                 </thead>
                 <?php
                     $result = mysqli_query($con, "SELECT * FROM `jadwalpraktikum` 
-                    WHERE EXISTS (SELECT 1 from praktikan where kelompok = praktikanKelompok)");
+                    WHERE kelompok = '$kelompok'");
                     while($jadwalpraktikum = mysqli_fetch_array($result)){
                         echo "<tbody>";
                             echo "<tr>";

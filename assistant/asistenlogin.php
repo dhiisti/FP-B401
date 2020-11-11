@@ -8,14 +8,14 @@ if (isset($_SESSION['assitantSession']) != "") {
 }
 
 if (isset($_POST['login'])) {
-    $assistantNRP = mysqli_real_escape_string($con,$_POST['assistantNRP']);
+    $asistenNRP = mysqli_real_escape_string($con,$_POST['asistenNRP']);
     $password  = mysqli_real_escape_string($con,$_POST['password']);
 
-    $res = mysqli_query($con,"SELECT * FROM assistant WHERE assistantNRP = '$assistantNRP'");
+    $res = mysqli_query($con,"SELECT * FROM asisten WHERE asistenNRP = '$asistenNRP'");
     $row=mysqli_fetch_array($res,MYSQLI_ASSOC);
 
     if ($row['password'] == $password){
-        $_SESSION['assistantSession'] = $row['assistantNRP'];
+        $_SESSION['assistantSession'] = $row['asistenNRP'];
         ?>
             <script type="text/javascript">
                 alert('Login Success');
@@ -51,7 +51,7 @@ if (isset($_POST['login'])) {
                 <form class="form" role="form" method="POST" accept-charset="UTF-8">
                     <div class="form-group">
                         <label for="inputNRP">NRP : </label>
-                        <input name="assistantNRP" type="text"  class="form-control" required>
+                        <input name="asistenNRP" type="text"  class="form-control" required>
                         <small id="emailHelp" class="form-text text-muted">Masukan NRP tanpa 0 (ex: 72118)</small>
                     </div>
                     <div class="form-group">

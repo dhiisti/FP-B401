@@ -8,20 +8,20 @@
     }
 
     $usersession = $_SESSION['assistantSession'];
-    $res = mysqli_query($con,"SELECT * FROM assistant WHERE assistantNRP=".$usersession);
+    $res = mysqli_query($con,"SELECT * FROM asisten WHERE asistenNRP=".$usersession);
     $userRow  = mysqli_fetch_array($res, MYSQLI_ASSOC);
 
     //ADD SCHEDULEs
     if(isset($_POST['submit'])) {
-        $date = mysqli_real_escape_string($con, $_POST['date']);
-        $day = mysqli_real_escape_string($con, $_POST['day']);
-        $start = mysqli_real_escape_string($con, $_POST['start']); 
-        $end = mysqli_real_escape_string($con, $_POST['end']);
+        $tanggal = mysqli_real_escape_string($con, $_POST['tanggal']);
+        $hari = mysqli_real_escape_string($con, $_POST['hari']);
+        $mulai = mysqli_real_escape_string($con, $_POST['mulai']); 
+        $selesai = mysqli_real_escape_string($con, $_POST['selesai']);
         $status = mysqli_real_escape_string($con, $_POST['status']);
-        $nrp = mysqli_real_escape_string($con, $_POST['nrp']);
+        $nrp = mysqli_real_escape_string($con, $userRow['asistenNRP']);
 
-        $query = "INSERT INTO assistantschedule (assist_NRP, scheduleDate, scheduleDay, startTime, endTime,  bookAvail ) 
-        VALUES ('$nrp', '$date', '$day','$start', '$end', '$status')";
+        $query = "INSERT INTO jadwalasisten (asistenNRP, jadwalTanggal, jadwalHari, mulai, selesai,  status ) 
+        VALUES ('$nrp', '$tanggal', '$hari','$mulai', '$selesai', '$status')";
 
         $result = mysqli_query($con, $query);
 
@@ -67,12 +67,12 @@
             </div>
 
             <ul class="list-unstyled components">
-                <p>Halo, <?php echo $userRow['assistantFirstName'];?> <?php echo $userRow['assistantLastName'];?> </p>
+                <p>Halo, <?php echo $userRow['asistenNama'];?></p>
                 <li class="active">
-                    <a href="addschedule.php"><i class="far fa-calendar-plus mr-md-4" ></i>Tambah Jadwal</a>
+                    <a href="addschedule.php"><i class="far fa-cselesaiar-plus mr-md-4" ></i>Tambah Jadwal</a>
                 </li>
                 <li>
-                    <a href="assistantdashboard.php"><i class="far fa-calendar-alt mr-md-4"></i>Jadwal Asistensi</a>
+                    <a href="assistantdashboard.php"><i class="far fa-cselesaiar-alt mr-md-4"></i>Jadwal Asistensi</a>
                 </li>
                 <li>
                     <a href="asistenlogout.php?logout"><i class="fas fa-power-off mr-md-4"></i>Log Out</a>
@@ -93,21 +93,21 @@
             
                         <!-- panel heading starat -->
                         <div>
-                            <h3>Add Schedule</h3>
+                            <h3>Tambah Jadwal :</h3>
                         </div>
-                        <!-- panel heading end -->
+                        <!-- panel headinselesai -->
             
                         <div class="">
                             <form action="<?php $_PHP_SELF ?>" method="POST" accept-charset="utf-8" class="form" role="form">
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
-                                        <label for="date">Tanggal :</label>
-                                        <input class="form-control" id="date" name="date" type="date" required/>
+                                        <label for="tanggal">Tanggal :</label>
+                                        <input class="form-control" id="tanggal" name="tanggal" type="date" required/>
                                     </div>
                 
                                     <div class="form-group col-md-6">
-                                        <label for="day">Hari :</label>
-                                        <select class="select form-control" id="day" name="day" required>
+                                        <label for="hari">Hari :</label>
+                                        <select class="select form-control" id="hari" name="hari" required>
                                             <option value="Monday">Monday</option>
                                             <option value="Tuesday">Tuesday</option>
                                             <option value="Wednesday">Wednesday</option>
@@ -119,25 +119,25 @@
                                 </div>
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
-                                        <label for="start">Mulai :</label>
-                                        <input class="form-control" type="time" id="start" name="start" required>
+                                        <label for="mulai">Mulai :</label>
+                                        <input class="form-control" type="time" id="mulai" name="mulai" required>
                                     </div>
                                     <div class="form-group col-md-6">
-                                        <label for="end">Selesai :</label>
-                                        <input class="form-control" type="time" id="end" name="end" required>
+                                        <label for="selesai">Selesai :</label>
+                                        <input class="form-control" type="time" id="selesai" name="selesai" required>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="control-label col-sm-2 requiredField" for="status">Availabilty</label>
                                     <select class="select form-control" id="status" name="status" required>
-                                        <option value="available">Available</option>
-                                        <option value="notavail">Not Available</option>
+                                        <option value="Available">Available</option>
+                                        <option value="Not Available">Not Available</option>
                                     </select>
                                 </div>
-                                <div class="form-group">
+                                <!-- <div class="form-group">
                                     <label class="control-label col-sm-2 requiredField" for="nrp">NRP</label>
-                                    <input class="form-control" type="text" id="nrp" name="nrp" value="<?php echo $userRow['assistantNRP'];?>" required>
-                                </div>
+                                    <input class="form-control" type="text" id="nrp" name="nrp" value="<?php echo $userRow['asistenNRP'];?>" required>
+                                </div> -->
                                 <button type="submit" class="btn btn-primary" name="submit">Submit</button>
                             </form>
                         </div>
@@ -156,19 +156,19 @@
                                 </tr>
                                 </thead>
                                 <?php
-                            $result = mysqli_query($con, "SELECT * FROM assistantschedule where assist_NRP =".$usersession);
+                            $result = mysqli_query($con, "SELECT * FROM jadwalasisten where asistenNRP =".$usersession);
                             
-                            while($assistantschedule = mysqli_fetch_array($result)){
+                            while($jadwalasisten = mysqli_fetch_array($result)){
                                 echo "<tbody>";
                                     echo "<tr>";
-                                    // echo "<td>" . $assistantschedule['assist_NRP'] . "</td>";
-                                    echo "<td>" . $assistantschedule['scheduleDate'] . "</td>";
-                                        echo "<td>" . $assistantschedule['scheduleDay'] . "</td>";
-                                        echo "<td>" . $assistantschedule['startTime'] . "</td>";
-                                        echo "<td>" . $assistantschedule['endTime'] . "</td>";
-                                        echo "<td>" . $assistantschedule['bookAvail'] . "</td>";
+                                    // echo "<td>" . $assistantschedule['asistenNRP'] . "</td>";
+                                    echo "<td>" . $jadwalasisten['jadwalTanggal'] . "</td>";
+                                        echo "<td>" . $jadwalasisten['jadwalHari'] . "</td>";
+                                        echo "<td>" . $jadwalasisten['mulai'] . "</td>";
+                                        echo "<td>" . $jadwalasisten['selesai'] . "</td>";
+                                        echo "<td>" . $jadwalasisten['status'] . "</td>";
                                         echo "<form method='POST'>";
-                                        echo "<td><a href='#' id='".$assistantschedule['id']."'class='delete'><i class='fas fa-trash' style='color:red;'></i></a>
+                                        echo "<td><a href='#' id='".$jadwalasisten['id']."'class='delete'><i class='fas fa-trash' style='color:red;'></i></a>
                                         </td>";     
                                     } 
                                     echo "</tr>";
