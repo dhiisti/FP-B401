@@ -26,89 +26,102 @@
 </head>
 <body class="hero-anime">
 
-    <div class="navigation-wrap start-header start-style">
-		<div class="container">
-			<div class="row">
-				<div class="col-12">
-					<nav class="navbar navbar-expand-md navbar-light">
-					
-						<a class="navbar-brand" href="https://front.codes/" target="_blank"><img src="assets/img/logo.png" alt=""></a>	
-						
-						<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-							<span class="navbar-toggler-icon"></span>
-						</button>
-						
-						<div class="collapse navbar-collapse" id="navbarSupportedContent">
-							<ul class="navbar-nav ml-auto py-4 py-md-0">
-                                <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
-                                    <a class="nav-link" href="praktikandashboard.php">Dashboard</a>
-                                </li>
-                                <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
-                                    <a class="nav-link" href="materi.php">Materi</a>
-                                </li>
-                                <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
-                                    <a class="nav-link" href="asisten.php">Asisten</a>
-                                </li>
-                                <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
-                                    <a class="nav-link" href="praktikanlogout.php?logout">Log Out</a>
-                                </li>
-							</ul>
-						</div>
-						
-					</nav>		
-				</div>
-			</div>
-		</div>
+    <div class="loading-container">
+      <div class="loading-screen">
+      </div>
     </div>
-    <div class="section full-height">
-        <div class="absolute-center2">
-            <div class="section">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-12">
-                            <h2 class="ml-4">Kelompok <?php echo $userRow['praktikanKelompok'];?> ,pilih asistenmu !</h2>
-                            <div class="form-group col-6">
-                                <label>NRP</label>
-                                <input class="form-control" type="text" id="nrp" name="nrp" onchange="showUser(this.value)"/>
-                                <small id="emailHelp" class="form-text">Masukan NRP tanpa 0 (ex: 72118)</small>  
+
+    <header>
+        <div class="navigation-wrap start-header start-style">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <nav class="navbar navbar-expand-md navbar-light">
+                        
+                            <a class="navbar-brand" href="https://front.codes/" target="_blank"><img src="assets/img/logo.png" alt=""></a>	
+                            
+                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+                            
+                            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                                <ul class="navbar-nav ml-auto py-4 py-md-0">
+                                    <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+                                        <a class="nav-link" href="praktikandashboard.php">Dashboard</a>
+                                    </li>
+                                    <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+                                        <a class="nav-link" href="materi.php">Materi</a>
+                                    </li>
+                                    <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+                                        <a class="nav-link" href="asisten.php">Asisten</a>
+                                    </li>
+                                    <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+                                        <a class="nav-link" href="praktikanlogout.php?logout">Log Out</a>
+                                    </li>
+                                </ul>
                             </div>
-                            <div class="col-xs-12 col-md-8">
-                                <div id="jadwal"></div>
-                            </div>
-                        </div>	
-                    </div>	
+                            
+                        </nav>		
+                    </div>
                 </div>
-
-                    <script>
-                        function showUser(str){			
-                            if (str == "") {
-                                document.getElementById("jadwal").innerHTML = "No data to be shown";
-                                return;
-                            } else {
-                                if (window.XMLHttpRequest) {
-                                    // code for IE7+, Firefox, Chrome, Opera, Safari
-                                    xmlhttp = new XMLHttpRequest();
-                                } else {
-                                    // code for IE6, IE5
-                                    xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-                                }
-
-                            xmlhttp.onreadystatechange = function() {
-                                if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-                                    document.getElementById("jadwal").innerHTML = xmlhttp.responseText;
-                                }
-                            };
-
-                            xmlhttp.open("GET","getschedule.php?q="+str,true);
-                            console.log(str);
-                            xmlhttp.send();
-
-                            }
-                        }
-                    </script>
             </div>
         </div>
+    </header>
+
+    <div data-barba="wrapper">
+        <main data-barba="container" data-barba-namespace="home">
+            <div class="section full-height">
+                <div class="absolute-center2">
+                    <div class="section">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-12">
+                                    <h2 class="ml-4">Kelompok <?php echo $userRow['praktikanKelompok'];?> ,pilih asistenmu !</h2>
+                                    <div class="form-group col-6">
+                                        <label>NRP</label>
+                                        <input class="form-control" type="text" id="nrp" name="nrp" onchange="showUser(this.value)"/>
+                                        <small id="emailHelp" class="form-text">Masukan NRP tanpa 0 (ex: 72118)</small>  
+                                    </div>
+                                    <div class="col-xs-12 col-md-8">
+                                        <div id="jadwal"></div>
+                                    </div>
+                                </div>	
+                            </div>	
+                        </div>
+        
+                            <script>
+                                function showUser(str){			
+                                    if (str == "") {
+                                        document.getElementById("jadwal").innerHTML = "No data to be shown";
+                                        return;
+                                    } else {
+                                        if (window.XMLHttpRequest) {
+                                            // code for IE7+, Firefox, Chrome, Opera, Safari
+                                            xmlhttp = new XMLHttpRequest();
+                                        } else {
+                                            // code for IE6, IE5
+                                            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+                                        }
+        
+                                    xmlhttp.onreadystatechange = function() {
+                                        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                                            document.getElementById("jadwal").innerHTML = xmlhttp.responseText;
+                                        }
+                                    };
+        
+                                    xmlhttp.open("GET","getschedule.php?q="+str,true);
+                                    console.log(str);
+                                    xmlhttp.send();
+        
+                                    }
+                                }
+                            </script>
+                    </div>
+                </div>
+            </div>
+        </main>
     </div>
+    
     <script>		
         (function($) { "use strict";
             
