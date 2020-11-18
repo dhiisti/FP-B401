@@ -139,31 +139,29 @@
 
     ?> -->
     <div class="section full-height">
-            <div class="absolute-center">
-            
+        <div class="absolute-center">    
             <div class="section">
-                <div class="container">
-                    
-                    
+                <div class="container">  
                     <div class="col-12">
                             
                             
                             <form class="form" role="form" method="POST" accept-charset="UTF-8" enctype="multipart/form-data">
-                                <div class="panel panel-default">
-                                    <div class="panel-heading">Praktikan</div>
-                                    <div class="panel-body">
-                                        Nama Praktikan : <?php echo $userRow['praktikanName'] ?><br>
-                                        NRP : <?php echo $userRow['praktikanNRP'] ?><br>
-                                        Kelompok : <?php echo $userRow['praktikanKelompok'] ?><br>
+                                <div class="card bg-light mb-3">
+                                    <div class="card-header">Praktikan</div>
+                                    <div class="card-body">
+                                        <h5 class="card-title">Nama Praktikan : <?php echo $userRow['praktikanName'] ?></h5>
+                                        <h5 class="card-title">NRP : <?php echo $userRow['praktikanNRP'] ?></h5>
+                                        <h5 class="card-title">Kelompok : <?php echo $userRow['praktikanKelompok'] ?></h5>
                                     </div>
                                 </div>
-                                <div class="panel panel-default">
-                                    <div class="panel-heading">Tanggal Asistensi</div>
-                                    <div class="panel-body">
-                                        Hari : <?php echo $userRow['jadwalHari'] ?><br>
-                                        Tanggal : <?php echo $userRow['jadwalTanggal'] ?><br>
-                                        Jam : <?php echo $userRow['mulai'] ?> - <?php echo $userRow['selesai'] ?><br><br>
-                                        Asisten : <?php echo $userRow['asistenNRP'] ?><br>
+
+                                <div class="card bg-light mb-3">
+                                    <div class="card-header">Tanggal Asistensi</div>
+                                    <div class="card-body">
+                                        <h5 class="card-title">Hari : <?php echo $userRow['jadwalHari'] ?></h5>
+                                        <h5 class="card-title">Tanggal : <?php echo $userRow['jadwalTanggal'] ?></h5>
+                                        <h5 class="card-title">Jam : <?php echo $userRow['mulai'] ?> - <?php echo $userRow['selesai'] ?></h5>
+                                        <h5 class="card-title">Asisten : <?php echo $userRow['asistenNRP'] ?></h5>
                                     </div>
                                 </div>
                                 
@@ -179,20 +177,15 @@
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <h3>Upload File</h3>
-                                    <input type="file" name="myfile"> <br>
+                                    <label for="praktikum" class="control-label">Upload File</label>
+                                    <input type="file" name="myfile">
+                                    <small id="file" class="form-text">*jenis file pdf, zip</small>
                                 </div>
-
-                                <div class="form-group">
-                                    <button type="submit" class="btn btn-primary" name="asistensi" jd="submit" value="Make Appointment">Submit</button>
-                                </div>
-
+                                <button type="submit" class="btn btn-primary" name="asistensi" jd="submit" value="Make Appointment">Submit</button>
                             </form>
                         
-                    </div>
-                    
+                    </div> 
                 </div>
-                
             </div>
         </div>
     </div>

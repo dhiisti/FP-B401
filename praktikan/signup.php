@@ -47,7 +47,7 @@ if (isset($_POST['signup'])) {
         <link href="assets/css/style.css" rel="stylesheet">
     </head>
     <body class="log-in">
-        <div class="container form-container col-6">
+        <div class="container form-container col-sm-6">
             <div class="justify-content-center">
                 <div class="">
                     <h2><img src="assets/img/4.png" 
@@ -68,13 +68,15 @@ if (isset($_POST['signup'])) {
                             <input type="text" name="praktikanNRP" value="" class="form-control input-lg" id="inputNRP" required/>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label for="inputEmail">Email :</label>
-                        <input type="email" name="praktikanEmail" value="" class="form-control input-lg" id="inputEmail" required/>
-                    </div>
-                    <div class="form-group">
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="inputEmail">Email :</label>
+                            <input type="email" name="praktikanEmail" value="" class="form-control input-lg" id="inputEmail" required/>
+                        </div>
+                        <div class="form-group col-md-6">
                         <label for="inputKelompok">Nama Kelompok :</label>
                         <input type="text" name="praktikanKelompok" value="" class="form-control input-lg" id="inputKelompok" required/>
+                        </div>
                     </div>
                     <div class="form-group">
                         <label for="password">Password :</label>
@@ -90,6 +92,7 @@ if (isset($_POST['signup'])) {
                 </form>
             </div>		
         </div>
+
         <script>
             $('#password').on('keyup', function(){
                 var passw=  /^[A-Za-z]\w{7,14}$/;
@@ -111,6 +114,6 @@ if (isset($_POST['signup'])) {
                 }
             });
 
-        </script>s
+        </script>
     </body>
 </html>

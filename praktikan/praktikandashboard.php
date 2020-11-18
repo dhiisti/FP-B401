@@ -78,65 +78,77 @@
     </div>
 
     <div class="section full-height jadwal">
-            <div class=judul_gambar>
-                <div class="judul">
-                    <h1>Jadwal</h1> 
-                    <h1>Kelompok <?php echo $userRow['praktikanKelompok'];?></h1>
+        <div class="absolute-center">
+            <div class="section">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <!-- <div class="row">
+                                <div class=judul_gambar>
+                                    <div class="judul">
+                                        <h1>Jadwal</h1>  -->
+                                        <h1>Kelompok <?php echo $userRow['praktikanKelompok'];?></h1>
+                                    <!-- </div>
+                                    <img src="assets/img/peep-46.png" class="peep-laptop">
+                                </div> -->
+                                <div class="table-responsive">
+                                    <table class="table table-borderless">
+                                        <thead class="thead-dark">
+                                            <tr>
+                                                <th scope="col">Praktikum</th>
+                                                <th scope="col">Tanggal</th>
+                                                <th scope="col">Jam</th>
+                                            </tr>
+                                        </thead>
+                                        <?php
+                                            $kelompok = $userRow['praktikanKelompok'];
+                                            $result = mysqli_query($con, "SELECT * FROM `jadwalpraktikum` 
+                                            WHERE kelompok = '$kelompok'");
+                                            while($jadwalpraktikum = mysqli_fetch_array($result)){
+                                                echo "<tbody>";
+                                                    echo "<tr>";
+                                                    // echo "<td>" . $jadwalpraktikum['assist_NRP'] . "</td>";
+                                                    echo "<td>" . $jadwalpraktikum['praktikum'] . "</td>";
+                                                        echo "<td>" . $jadwalpraktikum['tanggal'] . "</td>";
+                                                        echo "<td>" . $jadwalpraktikum['jam'] . "</td>";  
+                                            } 
+                                                    echo "</tr>";
+                                                echo "</tbody>";              
+                                        echo "</table>";
+                                        ?>
+                                </div>
+                                <div class="table-responsive">
+                                    <table class="table table-borderless">
+                                        <thead class="thead-dark">
+                                            <tr>
+                                                <th scope="col">Asistensi</th>
+                                                <th scope="col">Tanggal</th>
+                                                <th scope="col">Jam</th>
+                                            </tr>
+                                        </thead>
+                                        <?php
+                                            $result = mysqli_query($con, "SELECT * FROM `jadwalpraktikum` 
+                                            WHERE kelompok = '$kelompok'");
+                                            while($jadwalpraktikum = mysqli_fetch_array($result)){
+                                                echo "<tbody>";
+                                                    echo "<tr>";
+                                                    // echo "<td>" . $jadwalpraktikum['assist_NRP'] . "</td>";
+                                                    echo "<td>" . $jadwalpraktikum['praktikum'] . "</td>";
+                                                        echo "<td>" . $jadwalpraktikum['tanggal'] . "</td>";
+                                                        echo "<td>" . $jadwalpraktikum['jam'] . "</td>";  
+                                            } 
+                                                    echo "</tr>";
+                                                echo "</tbody>";              
+                                        echo "</table>";
+                                        ?>
+                                </div>
+                        </div>
+                    </div>
                 </div>
-                <img src="assets/img/peep-46.png" class="peep-laptop">
             </div>
-            <div class="col-md-4 tabel">
-            <table class="table table-borderless">
-                <thead>
-                    <tr>
-                        <th scope="col">Praktikum</th>
-                        <th scope="col">Tanggal</th>
-                        <th scope="col">Jam</th>
-                    </tr>
-                </thead>
-                <?php
-                    $kelompok = $userRow['praktikanKelompok'];
-                    $result = mysqli_query($con, "SELECT * FROM `jadwalpraktikum` 
-                    WHERE kelompok = '$kelompok'");
-                    while($jadwalpraktikum = mysqli_fetch_array($result)){
-                        echo "<tbody>";
-                            echo "<tr>";
-                            // echo "<td>" . $jadwalpraktikum['assist_NRP'] . "</td>";
-                            echo "<td>" . $jadwalpraktikum['praktikum'] . "</td>";
-                                echo "<td>" . $jadwalpraktikum['tanggal'] . "</td>";
-                                echo "<td>" . $jadwalpraktikum['jam'] . "</td>";  
-                    } 
-                            echo "</tr>";
-                        echo "</tbody>";              
-                echo "</table>";
-                ?>
-            </div>
-            <div class="col-md-4 tabel-2">
-            <table class="table table-borderless">
-                <thead>
-                    <tr>
-                        <th scope="col">Praktikum</th>
-                        <th scope="col">Tanggal</th>
-                        <th scope="col">Jam</th>
-                    </tr>
-                </thead>
-                <?php
-                    $result = mysqli_query($con, "SELECT * FROM `jadwalpraktikum` 
-                    WHERE kelompok = '$kelompok'");
-                    while($jadwalpraktikum = mysqli_fetch_array($result)){
-                        echo "<tbody>";
-                            echo "<tr>";
-                            // echo "<td>" . $jadwalpraktikum['assist_NRP'] . "</td>";
-                            echo "<td>" . $jadwalpraktikum['praktikum'] . "</td>";
-                                echo "<td>" . $jadwalpraktikum['tanggal'] . "</td>";
-                                echo "<td>" . $jadwalpraktikum['jam'] . "</td>";  
-                    } 
-                            echo "</tr>";
-                        echo "</tbody>";              
-                echo "</table>";
-                ?>
-            </div>
+        </div>                    
     </div>
+
     <script src="assets/js/jquery.js"></script>
 
     <script>		

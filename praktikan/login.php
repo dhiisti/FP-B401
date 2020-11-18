@@ -50,7 +50,7 @@ if (isset($_POST['login'])){
             <hr/>
         </div> -->
         <div class="peep"><img src="assets/img/peep-62.png" id="duduk"></div>
-        <div class="container form-container col-4">
+        <div class="container form-container col-sm-6">
             <div class="justify-content-center">
                 <form class="form" role="form" method="POST" accept-charset="UTF-8">
                     <div class="form-group">
@@ -70,7 +70,7 @@ if (isset($_POST['login'])){
         </div>		
         <div class="copy col-10">
             <p class="b401">B401&#169;2020</p>
-            <p class="ml-md-4"><a href="../assistant/asistenlogin.php">Asisten</a></p>
+            <p class="ml-md-4"><a href="../asisten/login.php">Asisten</a></p>
         </div>
     </body>
 </html>

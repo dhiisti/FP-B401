@@ -1,7 +1,7 @@
 <?php
     session_start();
     include_once '../assets/conn/dbconnect.php';
-    // include_once 'connection/server.php';
+
     if(!isset($_SESSION['praktikanSession']))
     {
         // header("Location: ../index.php");
@@ -61,16 +61,20 @@
 		</div>
     </div>
     <div class="section full-height">
-        <div class="absolute-center">
+        <div class="absolute-center2">
             <div class="section">
                 <div class="container">
                     <div class="row">
                         <div class="col-12">
-                        <h2>Kelompok <?php echo $userRow['praktikanKelompok'];?> ,pilih asistenmu !</h2>
-                        <div class="form-group col-md-6">
-                            <label>NRP</label>
-                            <input class="form-control" type="text" id="nrp" name="nrp" onchange="showUser(this.value)"/>  
-                        </div>
+                            <h2 class="ml-4">Kelompok <?php echo $userRow['praktikanKelompok'];?> ,pilih asistenmu !</h2>
+                            <div class="form-group col-6">
+                                <label>NRP</label>
+                                <input class="form-control" type="text" id="nrp" name="nrp" onchange="showUser(this.value)"/>
+                                <small id="emailHelp" class="form-text">Masukan NRP tanpa 0 (ex: 72118)</small>  
+                            </div>
+                            <div class="col-xs-12 col-md-8">
+                                <div id="jadwal"></div>
+                            </div>
                         </div>	
                     </div>	
                 </div>
@@ -78,7 +82,7 @@
                     <script>
                         function showUser(str){			
                             if (str == "") {
-                                document.getElementById("txtHint").innerHTML = "No data to be shown";
+                                document.getElementById("jadwal").innerHTML = "No data to be shown";
                                 return;
                             } else {
                                 if (window.XMLHttpRequest) {
@@ -91,7 +95,7 @@
 
                             xmlhttp.onreadystatechange = function() {
                                 if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-                                    document.getElementById("txtHint").innerHTML = xmlhttp.responseText;
+                                    document.getElementById("jadwal").innerHTML = xmlhttp.responseText;
                                 }
                             };
 
@@ -102,14 +106,6 @@
                             }
                         }
                     </script>
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-xs-12 col-md-8">
-                                <div id="txtHint"></div>
-                            </div>
-                        </div>
-                    </div>
-	
             </div>
         </div>
     </div>

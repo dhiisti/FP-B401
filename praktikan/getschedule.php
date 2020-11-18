@@ -20,7 +20,7 @@
 </head>
     <body>
         <?php
-        echo $q;
+   
         if (mysqli_num_rows($res)==0) {
         echo "<div class='alert alert-danger' role='alert'>Belum ada jadwal yang terinput</div>";
         
@@ -34,7 +34,7 @@
                     echo "  <th>Mulai</th>";
                     echo "  <th>Selesai</th>";
                     echo " <th>Status</th>";
-                    echo "  <th>Book Now!</th>";
+                    echo "  <th>Asistensi</th>";
                 echo " </tr>";
             echo "  </thead>";
             echo "  <tbody>";
@@ -42,8 +42,7 @@
                 ?>
                 <tr>
                     <?php
-                        // $avail=null;
-                        // $btnclick="";
+                       
                         if ($row['status']!='Available') {
                             $avail="danger";
                             $btnstate="disabled";
@@ -54,25 +53,19 @@
                             $btnclick="primary";
                     }
 
-                   
-                    // if ($rowapp['bookAvail']!="available") {
-                    // $btnstate="disabled";
-                    // } else {
-                    // $btnstate="";
-                    // }
                     echo "<td>" . $row['id'] . "</td>";
                     echo "<td>" . $row['jadwalHari'] . "</td>";
                     echo "<td>" . $row['jadwalTanggal'] . "</td>";
                     echo "<td>" . $row['mulai'] . "</td>";
                     echo "<td>" . $row['selesai'] . "</td>";
                     echo "<td> <span class='label label-".$avail."'>". $row['status'] ."</span></td>";
-                    echo "<td><a href='jadwalasistensi.php?&id=" . $row['id'] . "&jadwalTanggal=" .$row['jadwalTanggal']."' class='btn btn-".$btnclick." btn-xs' role='button' ".$btnstate.">Book Now</a></td>";
+                    echo "<td><a href='jadwalasistensi.php?&id=" . $row['id'] . "&jadwalTanggal=" .$row['jadwalTanggal']."' class='btn btn-".$btnclick." btn-xs' role='button' ".$btnstate.">Ambil</a></td>";
                     // echo "<td><a href='appointment.php?&appid=" . $row['scheduleId'] . "&scheduleDate=".$q."'>Book</a></td>";
                     // <td><button type='button' class='btn btn-primary btn-xs' data-toggle='modal' data-target='#exampleModal'>Book Now</button></td>";
                     //triggered when modal is about to be shown
                     ?>
                     
-                    <!-- ?> -->
+                 
                 </tr>
                 
                 <?php
