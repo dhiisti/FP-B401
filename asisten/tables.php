@@ -235,18 +235,19 @@
                                             where a.asistenNRP = $usersession");
                                         
                                         while($asistensi = mysqli_fetch_array($result)){
-                                            if ($asistensi['status']=='process') {
-                                                $status="danger";
+                                            if ($asistensi['status']=='Process') {
+                                                $status="default";
                                                 $icon='remove';
                                                 $checked='';
-            
+                                                $strike = 'line-through';
                                             } else {
-                                                $status="success";
+                                                $status="table-success";
                                                 $icon='ok';
                                                 $checked = 'disabled';
+                                                $strike = 'line-through';
                                             }
                                             echo "<tbody>";
-                                                echo "<tr>";
+                                                echo "<tr class='$status' style='text-decoration:$strike'>";
                                                     echo "<td>" . $asistensi['jadwalId'] . "</td>";
                                                     echo "<td>" . $asistensi['kelompok'] . "</td>";
                                                     echo "<td>" . $asistensi['praktikum'] . "</td>";
@@ -276,20 +277,21 @@
                             </div>
                         </div>
                     </div>
-                        <script type="text/javascript">
-                            function chkit(uid, chk) {
-                                chk = (chk==true ? "1" : "0");
-                                var url = "../assistant/updatedb.php?jadwalId="+uid+"&checked="+chk;
-                                if(window.XMLHttpRequest) {
-                                    req = new XMLHttpRequest();
-                                } else if(window.ActiveXObject) {
-                                    req = new ActiveXObject("Microsoft.XMLHTTP");
-                                }
-                                // Use get instead of post.
-                                req.open("GET", url, true);
-                                req.send(null);
+
+                    <script type="text/javascript">
+                        function chkit(uid, chk) {
+                            chk = (chk==true ? "1" : "0");
+                            var url = "updatedb.php?jadwalId="+uid+"&checked="+chk;
+                            if(window.XMLHttpRequest) {
+                                req = new XMLHttpRequest();
+                            } else if(window.ActiveXObject) {
+                                req = new ActiveXObject("Microsoft.XMLHTTP");
                             }
-                        </script>
+                            // Use get instead of post.
+                            req.open("GET", url, true);
+                            req.send(null);
+                        }
+                    </script>
                 </div>
                 <!-- /.container-fluid -->
 
@@ -346,17 +348,12 @@
 
     <!-- Custom scripts for all pages-->
     <script src="js/sb-admin-2.min.js"></script>
-
+    <script src="js/index.js"></script>
     <!-- Page level plugins -->
     <script src="vendor/datatables/jquery.dataTables.min.js"></script>
     <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
-
-    <!-- Page level custom scripts -->
-    <script src="js/demo/datatables-demo.js"></script>
     
-    <!-- Custom scripts for all pages-->
-    <script src="js/sb-admin-2.min.js"></script>
-    <script src="js/index.js"></script>
+    <!-- Page level custom scripts -->
+    <script src="js/demo/datatables-demo.js"></script>    
 </body>
-
 </html>

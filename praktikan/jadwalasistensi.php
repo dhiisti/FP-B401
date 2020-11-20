@@ -80,114 +80,132 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title></title>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-        <link href="assets/css/style.css" rel="stylesheet">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link href="assets/css/style.css" rel="stylesheet">
 </head>
-    <body>
-    <div class="navigation-wrap start-header start-style">
-		<div class="container">
-			<div class="row">
-				<div class="col-12">
-					<nav class="navbar navbar-expand-md navbar-light">
-					
-						<a class="navbar-brand" href="https://front.codes/" target="_blank"><img src="assets/img/logo.png" alt=""></a>	
-						
-						<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-							<span class="navbar-toggler-icon"></span>
-						</button>
-						
-						<div class="collapse navbar-collapse" id="navbarSupportedContent">
-							<ul class="navbar-nav ml-auto py-4 py-md-0">
-                                <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
-                                    <a class="nav-link" href="praktikandashboard.php">Dashboard</a>
-                                </li>
-                                <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
-                                    <a class="nav-link" href="materi.php">Materi</a>
-                                </li>
-                                <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
-                                    <a class="nav-link" href="asisten.php">Asisten</a>
-                                </li>
-                                <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
-                                    <a class="nav-link" href="praktikanlogout.php?logout">Log Out</a>
-                                </li>
-							</ul>
-						</div>
-						
-					</nav>		
-				</div>
-			</div>
-		</div>
+<body style="background-color: #D2E4C4;">
+
+    <div class="loading-container">
+        <div class="loading-screen">
+        </div>
     </div>
-    <!-- <?php
-        echo $tanggal;echo "<br>";
-        echo $id;echo "<br>";
-        echo $usersession;echo "<br>";
-        echo $userRow['praktikanName'];echo "<br>";
-        echo $userRow['praktikanNRP'];echo "<br>";
-        echo $userRow['praktikanKelompok'];echo "<br>";
-        echo $userRow['scheduleDate'];echo "<br>";
-        echo $userRow['startTime'];echo "<br>";
-        echo $userRow['endTime'];echo "<br>";
-        echo $userRow['scheduleDay'];echo "<br>";
 
-    ?> -->
-    <div class="section full-height">
-        <div class="absolute-center">    
-            <div class="section">
-                <div class="container">  
+    <header>
+        <div class="navigation-wrap start-header start-style">
+            <div class="container">
+                <div class="row">
                     <div class="col-12">
-                            
-                            
-                            <form class="form" role="form" method="POST" accept-charset="UTF-8" enctype="multipart/form-data">
-                                <div class="card bg-light mb-3">
-                                    <div class="card-header">Praktikan</div>
-                                    <div class="card-body">
-                                        <h5 class="card-title">Nama Praktikan : <?php echo $userRow['praktikanName'] ?></h5>
-                                        <h5 class="card-title">NRP : <?php echo $userRow['praktikanNRP'] ?></h5>
-                                        <h5 class="card-title">Kelompok : <?php echo $userRow['praktikanKelompok'] ?></h5>
-                                    </div>
-                                </div>
-
-                                <div class="card bg-light mb-3">
-                                    <div class="card-header">Tanggal Asistensi</div>
-                                    <div class="card-body">
-                                        <h5 class="card-title">Hari : <?php echo $userRow['jadwalHari'] ?></h5>
-                                        <h5 class="card-title">Tanggal : <?php echo $userRow['jadwalTanggal'] ?></h5>
-                                        <h5 class="card-title">Jam : <?php echo $userRow['mulai'] ?> - <?php echo $userRow['selesai'] ?></h5>
-                                        <h5 class="card-title">Asisten : <?php echo $userRow['asistenNRP'] ?></h5>
-                                    </div>
-                                </div>
-                                
-                                <div class="form-group">
-                                    <label for="praktikum" class="control-label">LAB ke :</label>
-                                    <select class="select form-control" id="praktikum" name="praktikum" required>
-                                            <option value="LAB 1">LAB 1</option>
-                                            <option value="LAB 2">LAB 2</option>
-                                            <option value="LAB 3">LAB 3</option>
-                                            <option value="LAB 4">LAB 4</option>
-                                            <option value="LAB 5">LAB 5</option>
-                                            
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label for="praktikum" class="control-label">Upload File</label>
-                                    <input type="file" name="myfile">
-                                    <small id="file" class="form-text">*jenis file pdf, zip</small>
-                                </div>
-                                <button type="submit" class="btn btn-primary" name="asistensi" jd="submit" value="Make Appointment">Submit</button>
-                            </form>
+                        <nav class="navbar navbar-expand-md navbar-light">
                         
-                    </div> 
+                            <a class="navbar-brand" href="praktikandashboard.php" target="_blank"><img src="assets/img/logo.png" alt=""></a>	
+                            
+                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+                            
+                            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                                <ul class="navbar-nav ml-auto py-4 py-md-0">
+                                    <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+                                        <a class="nav-link" href="praktikandashboard.php">Dashboard</a>
+                                    </li>
+                                    <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+                                        <a class="nav-link" href="materi.php">Materi</a>
+                                    </li>
+                                    <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+                                        <a class="nav-link" href="asisten.php">Asisten</a>
+                                    </li>
+                                    <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+                                        <a class="nav-link" href="praktikanlogout.php?logout">Log Out</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            
+                        </nav>		
+                    </div>
                 </div>
             </div>
         </div>
+    </header>
+
+    <div data-barba="wrapper">
+        <main data-barba="container" data-barba-namespace="jadwal">
+            <!-- <?php
+                echo $tanggal;echo "<br>";
+                echo $id;echo "<br>";
+                echo $usersession;echo "<br>";
+                echo $userRow['praktikanName'];echo "<br>";
+                echo $userRow['praktikanNRP'];echo "<br>";
+                echo $userRow['praktikanKelompok'];echo "<br>";
+                echo $userRow['jadwalTanggal'];echo "<br>";
+                echo $userRow['mulai'];echo "<br>";
+                echo $userRow['selesai'];echo "<br>";
+                echo $userRow['jadwalHari'];echo "<br>";
+
+            ?> -->
+            <div class="section full-height">
+                <div class="absolute-center">    
+                    <div class="section">
+                        <div class="container">  
+                            <div class="col-12">
+                                
+                                    
+                                    <form class="form" role="form" method="POST" accept-charset="UTF-8" enctype="multipart/form-data">
+                                        <div class="card bg-light mb-3">
+                                            <div class="card-header">Praktikan</div>
+                                            <div class="card-body">
+                                                <h5 class="card-title">Nama Praktikan : <?php echo $userRow['praktikanName'] ?></h5>
+                                                <h5 class="card-title">NRP : <?php echo $userRow['praktikanNRP'] ?></h5>
+                                                <h5 class="card-title">Kelompok : <?php echo $userRow['praktikanKelompok'] ?></h5>
+                                            </div>
+                                        </div>
+
+                                        <div class="card bg-light mb-3">
+                                            <div class="card-header">Tanggal Asistensi</div>
+                                            <div class="card-body">
+                                                <h5 class="card-title">Hari : <?php echo $userRow['jadwalHari'] ?></h5>
+                                                <h5 class="card-title">Tanggal : <?php echo $userRow['jadwalTanggal'] ?></h5>
+                                                <h5 class="card-title">Jam : <?php echo $userRow['mulai'] ?> - <?php echo $userRow['selesai'] ?></h5>
+                                                <h5 class="card-title">Asisten : <?php echo $userRow['asistenNRP'] ?></h5>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                            <label for="praktikum" class="control-label">LAB ke :</label>
+                                            <select class="select form-control" id="praktikum" name="praktikum" required>
+                                                    <option value="LAB 1">LAB 1</option>
+                                                    <option value="LAB 2">LAB 2</option>
+                                                    <option value="LAB 3">LAB 3</option>
+                                                    <option value="LAB 4">LAB 4</option>
+                                                    <option value="LAB 5">LAB 5</option>
+                                                    
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="praktikum" class="control-label">Upload File</label>
+                                            <input type="file" name="myfile">
+                                            <small id="emailHelp" class="form-text">*jenis file  zip, rar, dan pdf</small> 
+                                        </div>
+                                        <button type="submit" class="btn btn-primary" name="asistensi" jd="submit" value="Make Appointment">Submit</button>
+                                    </form>
+                                
+                            </div> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
     </div>
-    </body>
+
+    <!-- Barba Core -->
+    <script src="https://unpkg.com/@barba/core"></script>
+    <!-- GSAP for animation -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.2.4/gsap.min.js"></script>
+</body>
 </html>

@@ -105,7 +105,7 @@ body{
 	color: #971b1b !important;
 }
 .nav-item.active .nav-link{
-	color: #777 !important;
+	color: #971b1b !important;
 }
 .nav-link {
 	position: relative;
@@ -134,7 +134,26 @@ body{
 	position: relative;
     transition: all 200ms linear;
 }
-
+.section {
+	position: relative;
+	width: 100%;
+	display: block;
+}
+.full-height {
+	height: 100vh;
+}
+.over-hide {
+	overflow: hidden;
+}
+.absolute-center {
+	position: absolute;
+	top: 50%;
+	left: 0;
+	width: 100%;
+	margin-top: 40px;
+	transform: translateY(-50%);
+	z-index: 1;
+}
 /* #Materi
 ================================================== */
 #pdf1,
@@ -187,13 +206,13 @@ img {
     position: relative;
     z-index: 0;
     margin: 2em auto;
-    border: 0.5px solid #ededed;
     box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.05);
-    background: #fff;
+    background-color: #D2E4C4;
 }
 .page__wrapper {
     position: relative;
     min-height: 100vh;
+    background-color: #D2E4C4;
 }
 
 .js-next,
@@ -302,4 +321,5 @@ h1{
     text-align: center;
     margin-bottom: 30px;
     font-weight: 700;
+    color: #312F2F;
 }

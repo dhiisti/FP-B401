@@ -18,15 +18,20 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
         <link href="assets/css/style.css" rel="stylesheet">
 </head>
-    <body>
-        <?php
-   
-        if (mysqli_num_rows($res)==0) {
-        echo "<div class='alert alert-danger' role='alert'>Belum ada jadwal yang terinput</div>";
-        
-        } else {
-        echo "   <table class='table table-hover'>";
-            echo " <thead>";
+<body style="background-color: #D2E4C4;">
+    <div class="loading-container">
+        <div class="loading-screen"></div>
+    </div>
+
+    <div data-barba="wrapper">
+        <main data-barba="container" data-barba-namespace="asisten2">
+            <?php
+            if (mysqli_num_rows($res)==0) {
+            echo "<div class='alert alert-danger' role='alert'>Belum ada jadwal yang terinput</div>";
+
+            } else {
+            echo "   <table class='table table-hover'>";
+            echo " <thead class='thead-dark'>";
                 echo " <tr>";
                     echo " <th>Id</th>";
                     echo " <th>Hari</th>";
@@ -40,39 +45,42 @@
             echo "  <tbody>";
                 while($row = mysqli_fetch_array($res)) {
                 ?>
-                <tr>
-                    <?php
-                       
-                        if ($row['status']!='Available') {
-                            $avail="danger";
-                            $btnstate="disabled";
-                            $btnclick="danger";
-                        } else {
-                            $avail="primary";
-                            $btnstate="";
-                            $btnclick="primary";
-                    }
+                    <tr>
+                        <?php
+                            
+                            if ($row['status']!='Available') {
+                                $avail="danger";
+                                $btnstate="disabled";
+                                $btnclick="danger";
+                            } else {
+                                $avail="primary";
+                                $btnstate="";
+                                $btnclick="primary";
+                        }
 
-                    echo "<td>" . $row['id'] . "</td>";
-                    echo "<td>" . $row['jadwalHari'] . "</td>";
-                    echo "<td>" . $row['jadwalTanggal'] . "</td>";
-                    echo "<td>" . $row['mulai'] . "</td>";
-                    echo "<td>" . $row['selesai'] . "</td>";
-                    echo "<td> <span class='label label-".$avail."'>". $row['status'] ."</span></td>";
-                    echo "<td><a href='jadwalasistensi.php?&id=" . $row['id'] . "&jadwalTanggal=" .$row['jadwalTanggal']."' class='btn btn-".$btnclick." btn-xs' role='button' ".$btnstate.">Ambil</a></td>";
-                    // echo "<td><a href='appointment.php?&appid=" . $row['scheduleId'] . "&scheduleDate=".$q."'>Book</a></td>";
-                    // <td><button type='button' class='btn btn-primary btn-xs' data-toggle='modal' data-target='#exampleModal'>Book Now</button></td>";
-                    //triggered when modal is about to be shown
-                    ?>
-                    
-                 
-                </tr>
-                
+                        echo "<td>" . $row['id'] . "</td>";
+                        echo "<td>" . $row['jadwalHari'] . "</td>";
+                        echo "<td>" . $row['jadwalTanggal'] . "</td>";
+                        echo "<td>" . $row['mulai'] . "</td>";
+                        echo "<td>" . $row['selesai'] . "</td>";
+                        echo "<td> <span class='label label-".$avail."'>". $row['status'] ."</span></td>";
+                        echo "<td><a href='jadwalasistensi.php?&id=" . $row['id'] . "&jadwalTanggal=" .$row['jadwalTanggal']."' class='btn btn-".$btnclick." btn-xs' role='button' ".$btnstate.">Ambil</a></td>";
+                        // echo "<td><a href='appointment.php?&appid=" . $row['scheduleId'] . "&scheduleDate=".$q."'>Book</a></td>";
+                        // <td><button type='button' class='btn btn-primary btn-xs' data-toggle='modal' data-target='#exampleModal'>Book Now</button></td>";
+                        //triggered when modal is about to be shown
+                        ?>        
+                    </tr>
                 <?php
                 }
-                }
+            }
                 ?>
             </tbody>
-            <!-- modal start -->
-        </body>
-    </html>
+        </main>
+    </div>
+    
+    <!-- Barba Core -->
+    <script src="https://unpkg.com/@barba/core"></script>
+    <!-- GSAP for animation -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.2.4/gsap.min.js"></script>
+</body>
+</html>

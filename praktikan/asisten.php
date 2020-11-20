@@ -24,7 +24,7 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
         <link href="assets/css/style.css" rel="stylesheet">
 </head>
-<body class="hero-anime">
+<body class="hero-anime" style="background-color: #D2E4C4;">
 
     <div class="loading-container">
       <div class="loading-screen">
@@ -38,7 +38,7 @@
                     <div class="col-12">
                         <nav class="navbar navbar-expand-md navbar-light">
                         
-                            <a class="navbar-brand" href="https://front.codes/" target="_blank"><img src="assets/img/logo.png" alt=""></a>	
+                            <a class="navbar-brand" href="praktikandashboard.php" target="_blank"><img src="assets/img/logo.png" alt=""></a>	
                             
                             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                                 <span class="navbar-toggler-icon"></span>
@@ -52,7 +52,7 @@
                                     <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
                                         <a class="nav-link" href="materi.php">Materi</a>
                                     </li>
-                                    <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+                                    <li class="nav-item active pl-4 pl-md-0 ml-0 ml-md-4">
                                         <a class="nav-link" href="asisten.php">Asisten</a>
                                     </li>
                                     <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
@@ -69,7 +69,7 @@
     </header>
 
     <div data-barba="wrapper">
-        <main data-barba="container" data-barba-namespace="home">
+        <main data-barba="container" data-barba-namespace="asisten">
             <div class="section full-height">
                 <div class="absolute-center2">
                     <div class="section">
@@ -122,6 +122,10 @@
         </main>
     </div>
     
+    <!-- Barba Core -->
+     <script src="https://unpkg.com/@barba/core"></script>
+    <!-- GSAP for animation -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.2.4/gsap.min.js"></script>
     <script>		
         (function($) { "use strict";
             
