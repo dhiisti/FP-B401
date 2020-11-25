@@ -10,38 +10,52 @@
     $usersession = $_SESSION['assistantSession'];
     $res = mysqli_query($con,"SELECT * FROM asisten WHERE asistenNRP=".$usersession);
     $userRow  = mysqli_fetch_array($res, MYSQLI_ASSOC);
+    $msg = "";
+    $msg_class = "";
 
-    //ADD SCHEDULEs
     if (isset($_POST['submit'])) {
-    //variables
-        // $asistenNRP =  $_POST['asistenNRP'];
         $asistenNama =  $_POST['asistenNama'];
         $asistenHP =  $_POST['asistenHP'];
         $asistenEmail =  $_POST['asistenEmail'];
-        // $profilePic = ($con,$_POST['profilePic']);
+        $asistenPic = time() . '_' . $_FILES['asistenPic']['name'];
 
-        $res = mysqli_query($con, "UPDATE asisten SET asistenNama='$asistenNama', asistenHP='$asistenHP', asistenEmail='$asistenEmail' WHERE asistenNRP=". $_SESSION['assistantSession']);
-        // $query = "UPDATE asisten SET asistenNRP='$asistenNRP', asistenNama='$asistenNama', asistenHP='$asistenHP', asistenEmail='$asistenEmail',  WHERE asistenNRP=".$usersession;
+        $destination = 'img/' . basename($asistenPic);
+        $file = $_FILES['asistenPic']['tmp_name'];
 
-        // $result = mysqli_query($con, $query);
-
-        if($res){
-            ?>
-            <script type="text/javascript">
-                alert('Success');
-            </script>
-            <?php
-            header( 'Location: profile.php' ) ;
-
-        }else{
-            ?>
-            <script type="text/javascript">
-                alert('Failed');
-            </script>
-            <?php
+        if(file_exists($file)) {
         }
-        // $userRow=mysqli_fetch_array($res);
+          // Upload image only if no errors
+        if (empty($error)) {
+            if(move_uploaded_file($file, $destination)){
+                $res = mysqli_query($con, "UPDATE asisten SET 
+                    asistenNama='$asistenNama', asistenHP='$asistenHP', asistenEmail='$asistenEmail', asistenPic='$asistenPic' 
+                    WHERE asistenNRP=". $_SESSION['assistantSession']);
+                if ($res){
+                    ?>
+                    <script type="text/javascript">
+                        alert('Appointment made successfully.');
+                    </script>
+                    <?php
+                    header("Location: profile.php");
+                }else{
+                    echo mysqli_error($con);
+                    ?>
+                        <script type="text/javascript">
+                            alert('Appointment booking fail. Please try again.');
+                        </script>
+                    <?php
+                    header("Location: profile.php");
+                }
+            } else {
+                $res = mysqli_query($con, "UPDATE asisten SET 
+                    asistenNama='$asistenNama', asistenHP='$asistenHP', asistenEmail='$asistenEmail'
+                    WHERE asistenNRP=". $_SESSION['assistantSession']);
+                 header("Location: profile.php");
+            }
+        }
+               
     }
+        
 ?>
 
 <!DOCTYPE html>
@@ -107,8 +121,8 @@
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Custom Components:</h6>
-                        <a class="collapse-item" href="buttons.html">Buttons</a>
-                        <a class="collapse-item" href="cards.html">Cards</a>
+                        <a class="collapse-item" href="profile.php">Profile</a>
+                        <a class="collapse-item" href="asistenlogout.php">Log Out</a>
                     </div>
                 </div>
             </li>
@@ -170,18 +184,14 @@
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">Halo, <?php echo $userRow['asistenNama'];?></span>
                                 <img class="img-profile rounded-circle"
-                                    src="img/undraw_profile.svg">
+                                 src="img/<?php echo $userRow['asistenPic'];?>" style="object-fit: cover;">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="#">
+                                <a class="dropdown-item" href="profile.php">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Profile
-                                </a>
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Settings
                                 </a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
@@ -202,52 +212,64 @@
                         <h1 class="h3 mb-0 text-gray-800">Assistant Profile</h1>
                     </div>
                 </div>
-                        
-                <div class="card-body">
-                    <div class="row">
-                        <!-- start -->
-                        <!-- USER PROFILE ROW STARTS-->
-                          
-                                <div class="col-2">
-                                    <div class="user-wrapper">
-                                        <img class="img-profile rounded-circle mb-4" src="img/undraw_profile.svg" style="width: 100px;">
-                                        <div class="description">
-                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#update">Update Profile</button>
-                                        </div>
+
+                <div class="row">
+                    <!-- Pie Chart -->
+                    <div class="col-xl-4 col-lg-5">
+                        <div>
+                            <!-- Card Body -->
+                            <div class="card-body">
+                                <div class="text-center small">
+                                    <div class="user-wrapper ">
+                                        <img class = "mb-4 mx-auto" src="img/<?php echo $userRow['asistenPic'];?>" style="width:150px; height:150px; object-fit: cover; border-radius: 50%">
                                     </div>
                                 </div>
-                                
-                                <div class="col user-wrapper">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Area Chart -->
+                    <div class="col-xl-8 col-lg-7">
+                        <div class="mb-4">
+                            <!-- Card Body -->
+                            <div class="card-body">
+                                <div class="chart-area">
                                     <div class="description">
-                                        <h3> <?php echo $userRow['asistenNama']; ?></h3>
-                                        <div class="panel panel-default">
-                                            <div class="panel-body">    
-                                                <table class="table table-user-information">
-                                                    <tbody>
-                                                        <tr>
-                                                            <td>NRP</td>
-                                                            <td><?php echo $userRow['asistenNRP']; ?></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Nomor HP</td>
-                                                            <td><?php echo $userRow['asistenHP']; ?>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Email</td>
-                                                            <td><?php echo $userRow['asistenEmail']; ?>
-                                                            </td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
+                                            <h3> <?php echo $userRow['asistenNama']; ?></h3>
+                                            <div class="panel panel-default">
+                                                <div class="panel-body">    
+                                                    <table class="table table-user-information">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>NRP</td>
+                                                                <td><?php echo $userRow['asistenNRP']; ?></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Nomor HP</td>
+                                                                <td><?php echo $userRow['asistenHP']; ?>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Email</td>
+                                                                <td><?php echo $userRow['asistenEmail']; ?>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                            <div class="description mx-auto">
+                                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#update">Update Profile</button>
                                             </div>
                                         </div>
-                                        
                                     </div>
-                                    
-                                </div>
-               
-                        
+                            </div>
+                        </div>
+                    </div>
+
+                    
+                </div>  
+
+                <div class="card-body">
                         <!-- USER PROFILE ROW END-->
                         <div class="col">
                             <div class="modal fade" id="update" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -260,10 +282,15 @@
                                             </button>
                                         </div>
                                         <div class="modal-body">
-                                            <!-- form start -->
-                                            <form action="<?php $_PHP_SELF ?>" method="POST" accept-charset="utf-8" class="form" role="form">
+                                            <form action="<?php $_PHP_SELF ?>" method="POST" accept-charset="utf-8" class="form" role="form" enctype="multipart/form-data">
                                                 <table class="table table-user-information">
                                                     <tbody>
+                                                    <div class="form-group text-center" style="position: relative;" >
+                                                        <img class="mb-4" src="img/<?php echo $userRow['asistenPic'];?>" onClick="triggerClick()" id="profileDisplay" 
+                                                        style="display: block; width:100px; height:100px; object-fit:cover; border-radius: 50%; margin: 0px auto;">
+                                                        <input type="file" name="asistenPic" onChange="displayImage(this)" id="asistenPic" class="form-control" style="display: none;">
+                                                        <label><b>Profile Image</b></label>
+                                                    </div>
                                                         <tr>
                                                             <td>NRP:</td>
                                                             <td><?php echo $userRow['asistenNRP']; ?></td>
@@ -298,9 +325,27 @@
                     </div>
                 </div>
 
+        </div>
+    </div>
+
+    <!-- Logout Modal-->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-primary" href="login.php?logout">Logout</a>
+                </div>
             </div>
         </div>
-
     </div>
     <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>

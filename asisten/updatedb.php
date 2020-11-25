@@ -5,4 +5,6 @@
     $checked = $_GET['checked'];
 
     $update = mysqli_query($con,"UPDATE asistensi SET status='done' WHERE jadwalId=$jadwalId");
+
+    header("Location: tables.php");
 ?>

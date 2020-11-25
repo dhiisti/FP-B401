@@ -76,7 +76,7 @@
                         <div class="container">
                             <div class="row">
                                 <div class="col-12">
-                                    <h2 class="ml-4">Kelompok <?php echo $userRow['praktikanKelompok'];?> ,pilih asistenmu !</h2>
+                                    <h2 class="ml-4">Kelompok <?php echo $userRow['praktikanKelompok'];?>, pilih asistenmu !</h2>
                                     <div class="form-group col-6">
                                         <label>NRP</label>
                                         <input class="form-control" type="text" id="nrp" name="nrp" onchange="showUser(this.value)"/>

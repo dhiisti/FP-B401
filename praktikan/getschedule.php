@@ -2,7 +2,9 @@
     session_start();
     include_once '../assets/conn/dbconnect.php';
     $q = $_GET['q'];
-    $res = mysqli_query($con,"SELECT * FROM jadwalasisten WHERE asistenNRP='$q'");
+
+    $res = mysqli_query($con," SELECT a.*, b.* FROM jadwalasisten a INNER JOIN asisten b 
+    WHERE a.asistenNRP='$q' AND b.asistenNRP='$q'");
 ?>
 
 <!DOCTYPE html>
@@ -27,27 +29,26 @@
         <main data-barba="container" data-barba-namespace="asisten2">
             <?php
             if (mysqli_num_rows($res)==0) {
-            echo "<div class='alert alert-danger' role='alert'>Belum ada jadwal yang terinput</div>";
-
+                echo "<div class='alert alert-danger' role='alert'>Belum ada jadwal yang terinput</div>";
             } else {
-            echo "   <table class='table table-hover'>";
-            echo " <thead class='thead-dark'>";
-                echo " <tr>";
-                    echo " <th>Id</th>";
-                    echo " <th>Hari</th>";
-                    echo " <th>Tanggal</th>";
-                    echo "  <th>Mulai</th>";
-                    echo "  <th>Selesai</th>";
-                    echo " <th>Status</th>";
-                    echo "  <th>Asistensi</th>";
-                echo " </tr>";
-            echo "  </thead>";
-            echo "  <tbody>";
-                while($row = mysqli_fetch_array($res)) {
+                echo "   <table class='table table-hover'>";
+                echo " <thead class='thead-dark'>";
+                    echo " <tr>";
+                        echo " <th>Id</th>";
+                        echo " <th>Hari</th>";
+                        echo " <th>Tanggal</th>";
+                        echo "  <th>Mulai</th>";
+                        echo "  <th>Selesai</th>";
+                        echo " <th>Status</th>";
+                        echo "  <th>Asistensi</th>";
+                    echo " </tr>";
+                echo "  </thead>";
+                echo "  <tbody>";
+            
+                while( $row = mysqli_fetch_array($res)) {
                 ?>
                     <tr>
                         <?php
-                            
                             if ($row['status']!='Available') {
                                 $avail="danger";
                                 $btnstate="disabled";
@@ -57,7 +58,7 @@
                                 $btnstate="";
                                 $btnclick="primary";
                         }
-
+                        
                         echo "<td>" . $row['id'] . "</td>";
                         echo "<td>" . $row['jadwalHari'] . "</td>";
                         echo "<td>" . $row['jadwalTanggal'] . "</td>";
