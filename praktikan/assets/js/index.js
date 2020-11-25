@@ -1,3 +1,21 @@
+(function($) { "use strict";
+        //Animation
+
+        $(document).ready(function() {
+            $('body.hero-anime').removeClass('hero-anime');
+        });
+
+        //Menu On Hover
+        $('body').on('mouseenter mouseleave','.nav-item',function(e){
+                if ($(window).width() > 750) {
+                    var _d=$(e.target).closest('.nav-item');_d.addClass('show');
+                    setTimeout(function(){
+                    _d[_d.is(':hover')?'addClass':'removeClass']('show');
+                    },1);
+                }
+        });	
+})(jQuery); 
+
 $(window).scroll(function() {
   if ($(this).scrollTop() <= 450) {
     $('#wrapper').addClass('colorOne')
@@ -9,16 +27,3 @@ $(window).scroll(function() {
     $('#wrapper').addClass('colorOne')
   }
 });
-
-function fadeIn(){
-  var target = document.querySelector('.anim2');
-  var targetPosition = target.getBoundingClientRect().top;
-  var screenPosition = window.innerHeight /1.3;
-
-    if(targetPosition < screenPosition){
-        target.classList.add('fade-in');
-    } 
-} 
-
-
-window.addEventListener("scroll", fadeIn);

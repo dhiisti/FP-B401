@@ -22,6 +22,7 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="https://unpkg.com/simplebar@2.4.3/dist/simplebar.css"/>
         <link href="assets/css/style.css" rel="stylesheet">
     </head>
 
@@ -62,16 +63,18 @@
             </div>
         </div>
     </header>
-    <section id="wrapper" class="colorOne">
+    <main id="wrapper" class="colorOne" data-simplebar>
             <div class="section full-height">
                 <div class="absolute-center">
                     <div class="section">
                         <div class="container">
                             <div class="row">
                                 <div class="col-12">
-                        <h1><span>H</span><span>a</span><span>l</span><span>o</span><span>,</span>
-                        <span>P</span><span>r</span><span>a</span><span>k</span><span>t</span><span>i</span><span>k</span><span>a</span><span>n</span></h1>
-                        <p>Praktikum Rangkaian Digital B401</p>	
+                                    <svg viewBox="0 0 1350 600">
+                                        <text x="50%" y="50%" fill="transparent" text-anchor="middle">Halo, Praktikan</text>
+                                    </svg>
+                                    <p>Praktikum Rangkaian Digital B401</p>	
+                                   
                                 </div>	
                             </div>		
                         </div>		
@@ -159,32 +162,8 @@
                     </div>
                 </div>                    
             </div>
-    </section>
+        </main>
 
     <script src="assets/js/index.js"></script>
-    <!-- Barba Core -->
-    <script src="https://unpkg.com/@barba/core"></script>
-    <!-- GSAP for animation -->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.2.4/gsap.min.js"></script>
-
-    <script>		
-        (function($) { "use strict";
-        //Animation
-
-        $(document).ready(function() {
-            $('body.hero-anime').removeClass('hero-anime');
-        });
-
-        //Menu On Hover
-        $('body').on('mouseenter mouseleave','.nav-item',function(e){
-                if ($(window).width() > 750) {
-                    var _d=$(e.target).closest('.nav-item');_d.addClass('show');
-                    setTimeout(function(){
-                    _d[_d.is(':hover')?'addClass':'removeClass']('show');
-                    },1);
-                }
-        });	
-        })(jQuery); 
-	</script>
     </body>
 </html>

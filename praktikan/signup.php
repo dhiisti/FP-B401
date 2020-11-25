@@ -10,6 +10,7 @@ if (isset($_POST['signup'])) {
     $praktikanNRP = mysqli_real_escape_string($con,$_POST['praktikanNRP']);
     $praktikanKelompok = mysqli_real_escape_string($con,$_POST['praktikanKelompok']);
     $password = mysqli_real_escape_string($con,$_POST['password']);
+    $password = md5($password);
 
     //INSERT
     $query = " INSERT INTO praktikan ( praktikanNRP, password, praktikanName, praktikanKelompok, praktikanEmail )
@@ -47,73 +48,58 @@ if (isset($_POST['signup'])) {
         <link href="assets/css/style.css" rel="stylesheet">
     </head>
     <body class="log-in">
-        <div class="container form-container col-sm-6">
-            <div class="justify-content-center">
-                <div class="">
-                    <h2><img src="assets/img/4.png" 
-                             style="width: 70px;height:70px;
-	                                object-fit:cover;
-	                                border:5px solid #E8E1E1;
-	                                border-radius:50%;">Registrasi</h2>
-                    <hr/>
-                </div>
-                <form action="<?php $_PHP_SELF ?>" method="POST" accept-charset="utf-8" class="form" role="form" name="form1">
-                    <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <label for="inputName">Nama : </label>
-                            <input type="text" name="praktikanName" value="" class="form-control input-lg" id="inputName" required />
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label for="inputNRP">NRP :</label>
-                            <input type="text" name="praktikanNRP" value="" class="form-control input-lg" id="inputNRP" required/>
-                        </div>
+    <div class="container-canvas">
+        <canvas id="canvas"></canvas>
+        <div id="myDiv">
+            <div class="container form-container col-sm-6">
+                <div class="justify-content-center">
+                    <div class="">
+                        <h2><img src="assets/img/4.png" 
+                                style="width: 70px;height:70px;
+                                        object-fit:cover;
+                                        border:5px solid #E8E1E1;
+                                        border-radius:50%;">Registrasi</h2>
+                        <hr/>
                     </div>
-                    <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <label for="inputEmail">Email :</label>
-                            <input type="email" name="praktikanEmail" value="" class="form-control input-lg" id="inputEmail" required/>
+                    <form action="<?php $_PHP_SELF ?>" method="POST" accept-charset="utf-8" class="form" role="form" name="form1">
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="inputName">Nama : </label>
+                                <input type="text" name="praktikanName" value="" class="form-control input-lg" id="inputName" required />
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="inputNRP">NRP :</label>
+                                <input type="text" name="praktikanNRP" value="" class="form-control input-lg" id="inputNRP" required/>
+                            </div>
                         </div>
-                        <div class="form-group col-md-6">
-                        <label for="inputKelompok">Nama Kelompok :</label>
-                        <input type="text" name="praktikanKelompok" value="" class="form-control input-lg" id="inputKelompok" required/>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="inputEmail">Email :</label>
+                                <input type="email" name="praktikanEmail" value="" class="form-control input-lg" id="inputEmail" required/>
+                            </div>
+                            <div class="form-group col-md-6">
+                            <label for="inputKelompok">Nama Kelompok :</label>
+                            <input type="text" name="praktikanKelompok" value="" class="form-control input-lg" id="inputKelompok" required/>
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="password">Password :</label>
-                        <input type="password" name="password" value="" class="form-control input-lg" id="password" required />
-                        <span id='message'></span>
-                    </div>
-                    <div class="form-group">
-                        <label for="confirm_password">Confirm Password :</label>
-                        <input type="password" name="confirm_password" value="" class="form-control input-lg" id="confirm_password" required/>
-                        <span id='message2'></span>
-                    </div>
-                    <button type="submit" name="signup" id="signup" class="btn btn-primary">Sign Up</button>
-                </form>
-            </div>		
+                        <div class="form-group">
+                            <label for="password">Password :</label>
+                            <input type="password" name="password" value="" class="form-control input-lg" id="password" required />
+                            <span id='message'></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="confirm_password">Confirm Password :</label>
+                            <input type="password" name="confirm_password" value="" class="form-control input-lg" id="confirm_password" required/>
+                            <span id='message2'></span>
+                        </div>
+                        <button type="submit" name="signup" id="signup" class="btn btn-primary">Sign Up</button>
+                    </form>
+                </div>		
+            </div>
         </div>
+    </div>
 
-        <script>
-            $('#password').on('keyup', function(){
-                var passw=  /^[A-Za-z]\w{7,14}$/;
-                if($(this).val().match(passw)) { 
-                    $('#message').html('Strong Enough').css('color', 'lime');
-                }else{ 
-                    $('#message').html('Not Strong Enough').css('color', 'red');
-                }
-            });
+    <script src="assets/js/background.js"></script>
 
-            $('#confirm_password').on('keyup', function () {
-                if ($(this).val() == $('#password').val()) {
-                    $('#confirm_password').css('border-color', 'lime');
-                    $('#message2').html('Match').css('color', 'lime');
-                } 
-                else{
-                    $('#confirm_password').css('border-color', 'red');
-                    $('#message2').html('Not Match').css('color', 'red');
-                }
-            });
-
-        </script>
     </body>
 </html>
