@@ -90,72 +90,13 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <link href="assets/css/style.css" rel="stylesheet">
 </head>
-<body style="background-color: #D2E4C4;">
-
-    <div class="loading-container">
-        <div class="loading-screen">
-        </div>
-    </div>
-
-    <header>
-        <div class="navigation-wrap start-header start-style">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <nav class="navbar navbar-expand-md navbar-light">
-                        
-                            <a class="navbar-brand" href="praktikandashboard.php" target="_blank"><img src="assets/img/logo.png" alt=""></a>	
-                            
-                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                                <span class="navbar-toggler-icon"></span>
-                            </button>
-                            
-                            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                                <ul class="navbar-nav ml-auto py-4 py-md-0">
-                                    <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
-                                        <a class="nav-link" href="praktikandashboard.php">Dashboard</a>
-                                    </li>
-                                    <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
-                                        <a class="nav-link" href="materi.php">Materi</a>
-                                    </li>
-                                    <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
-                                        <a class="nav-link" href="asisten.php">Asisten</a>
-                                    </li>
-                                    <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
-                                        <a class="nav-link" href="praktikanlogout.php?logout">Log Out</a>
-                                    </li>
-                                </ul>
-                            </div>
-                            
-                        </nav>		
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
-
-    <div data-barba="wrapper">
-        <main data-barba="container" data-barba-namespace="jadwal">
-            <!-- <?php
-                echo $tanggal;echo "<br>";
-                echo $id;echo "<br>";
-                echo $usersession;echo "<br>";
-                echo $userRow['praktikanName'];echo "<br>";
-                echo $userRow['praktikanNRP'];echo "<br>";
-                echo $userRow['praktikanKelompok'];echo "<br>";
-                echo $userRow['jadwalTanggal'];echo "<br>";
-                echo $userRow['mulai'];echo "<br>";
-                echo $userRow['selesai'];echo "<br>";
-                echo $userRow['jadwalHari'];echo "<br>";
-
-            ?> -->
+<body style="background-color: #EDE6F2;">
+        <main>
             <div class="section full-height">
-                <div class="absolute-center">    
+                <div class="absolute-center2">    
                     <div class="section">
                         <div class="container">  
                             <div class="col-12">
-                                
-                                    
                                     <form class="form" role="form" method="POST" accept-charset="UTF-8" enctype="multipart/form-data">
                                         <div class="card bg-light mb-3">
                                             <div class="card-header">Praktikan</div>
@@ -178,7 +119,7 @@
                                         
                                         <div class="form-group">
                                             <label for="praktikum" class="control-label">LAB ke :</label>
-                                            <select class="select form-control" id="praktikum" name="praktikum" required>
+                                            <select class="select form-control" id="praktikum" name="praktikum" required style="font-size:1em;">
                                                     <option value="LAB 1">LAB 1</option>
                                                     <option value="LAB 2">LAB 2</option>
                                                     <option value="LAB 3">LAB 3</option>
@@ -192,7 +133,7 @@
                                             <input type="file" name="myfile">
                                             <small id="emailHelp" class="form-text">*jenis file  zip, rar, dan pdf</small> 
                                         </div>
-                                        <button type="submit" class="btn btn-primary" name="asistensi" jd="submit" value="Make Appointment">Submit</button>
+                                        <button type="submit" class="btn btn-primary" name="asistensi" jd="submit" value="Make Appointment" style="width: 100px; height:30px; font-size: 1em;">Submit</button>
                                     </form>
                                 
                             </div> 

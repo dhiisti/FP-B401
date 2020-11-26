@@ -1,29 +1,70 @@
 (function($) { "use strict";
-        //Animation
+  //Animation
 
-        $(document).ready(function() {
-            $('body.hero-anime').removeClass('hero-anime');
-        });
+  $(document).ready(function() {
+      $('body.hero-anime').removeClass('hero-anime');
 
-        //Menu On Hover
-        $('body').on('mouseenter mouseleave','.nav-item',function(e){
-                if ($(window).width() > 750) {
-                    var _d=$(e.target).closest('.nav-item');_d.addClass('show');
-                    setTimeout(function(){
-                    _d[_d.is(':hover')?'addClass':'removeClass']('show');
-                    },1);
-                }
-        });	
+      //smooth scrolling by https://codepen.io/chriscoyier/pen/dpBMVP
+      $('a[href*="#"]')
+      // Remove links that don't actually link to anything
+      .not('[href="#"]')
+      .not('[href="#0"]')
+      .click(function(event) {
+        // On-page links
+        if (
+          location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') 
+          && 
+          location.hostname == this.hostname
+        ) {
+          // Figure out element to scroll to
+          var target = $(this.hash);
+          target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+          // Does a scroll target exist?
+          if (target.length) {
+            // Only prevent default if animation is actually gonna happen
+            event.preventDefault();
+            $('html, body').animate({
+              scrollTop: target.offset().top
+            }, 1000, function() {
+              // Callback after animation
+              // Must change focus!
+              var $target = $(target);
+              $target.focus();
+              if ($target.is(":focus")) { // Checking if the target was focused
+                return false;
+              } else {
+                $target.attr('tabindex','-1'); // Adding tabindex for elements not focusable
+                $target.focus(); // Set focus again
+              };
+            });
+          }
+        }
+      });
+
+      $(window).scroll(function() {
+        if ($(this).scrollTop() <= 450) {
+          $('#wrapper').addClass('colorOne')
+          .removeClass('colorTwo');
+          $(".nav-link").css("color" , "#22252B");
+        } else{
+          $('#wrapper').addClass('colorTwo')
+          $(".nav-link").css("color" , "white");
+        }
+      });
+      
+  });
+
+  //Menu On Hover
+  $('body').on('mouseenter mouseleave','.nav-item',function(e){
+    if ($(window).width() > 750) {
+        var _d=$(e.target).closest('.nav-item');_d.addClass('show');
+        setTimeout(function(){
+        _d[_d.is(':hover')?'addClass':'removeClass']('show');
+        },1);
+    }
+  });
+  
+  
+
 })(jQuery); 
 
-$(window).scroll(function() {
-  if ($(this).scrollTop() <= 450) {
-    $('#wrapper').addClass('colorOne')
-      .removeClass('colorTwo');
-  } else if ($(this).scrollTop() <= 1000) {
-    $('#wrapper').addClass('colorTwo')
-      .removeClass('colorThree');
-  } else {
-    $('#wrapper').addClass('colorOne')
-  }
-});

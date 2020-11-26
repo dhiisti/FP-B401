@@ -99,15 +99,15 @@ body{
 	border-color: transparent;
 }
 .nav-link{
-	color: #212121 !important;
+	color: #22252B;
 	font-weight: 500;
     transition: all 200ms linear;
 }
 .nav-item:hover .nav-link{
-	color: #971b1b !important;
+	color: #EF2D56 !important;
 }
 .nav-item.active .nav-link{
-	color: #971b1b !important;
+	color: #EF2D56 !important;
 }
 .nav-link {
 	position: relative;
@@ -121,7 +121,7 @@ body{
 	width: 100%;
 	height: 2px;
 	content: '';
-	background-color: #971b1b;
+	background-color: #EF2D56;
 	opacity: 0;
     transition: all 200ms linear;
 }
@@ -142,12 +142,12 @@ body{
 h2{
 	font-family: 'Bebas Neue', cursive;
 	font-size: 3em;
-	color: #312F2F;
+	color: #22252B;
 	margin:0px;
 }
 hr{
 	margin-top: 0px;
-	border: 3px solid #312F2F;
+	border: 3px solid #22252B;
 }
 .container-canvas {
 	position: relative;
@@ -192,10 +192,10 @@ hr{
 	color: #22252B;
 }
 .form-container a {
-	color: #BF4342;
+	color: #EF2D56;
 }
 #emailHelp{
-	color: #BF4342;
+	color: #EF2D56;
 }
 .copy{
 	position: absolute;
@@ -267,12 +267,11 @@ hr{
 }
 .absolute-center2 {
 	position: absolute;
-	top: 40%;
+	top: 50%;
 	left: 0;
 	width: 100%;
-	margin-top: 40px;
 	transform: translateY(-50%);
-	z-index: 20;
+	z-index: 1;
 }
 h1{
 	font-size: 48px;
@@ -282,40 +281,27 @@ h1{
 	text-align: center;
 }
 p{
-	position: absolute;
 	text-align: center;
 	margin: 0;
 	padding-top: 10px;
 	opacity: 1;
-	top: 55%;
-	left: 50%;
-	transform: translateX(-50%);
-	font-size: 20px;
+	transform: translate(0);
 }
 
-.glass {                                   
-	position: absolute;
-	left: 50%;
-	top: 50%;
-	transform: translate(-50%, -50%);
-	height: 80%;
-	width: 80%;
-	/* background-image: url('../img/microchip.jpg');
-	background-size: cover;
-	background-position: center;
-	filter: blur(40px); */
-	display: flex;
-	z-index: -1;
-  }
+
 
 svg text{
-	stroke: #212112;
+	stroke: #22252B;
 	font-family: 'Barriecito', cursive;
 	font-size: 100px;
 	font-weight: 700;
-	stroke-width: 3;
+	stroke-width: 1;
 	animation: textAnimate 8s infinite alternate;
 	z-index: 100;
+}
+i:hover{
+	color: #EF2D56 !important;
+	transition: all .5s ease-in-out;
 }
 
 /* .mouse{
@@ -343,9 +329,7 @@ svg text{
 	animation: mouse 2s infinite;
 }*/
 
-.simplebar-scrollbar::before {
-	background-color: red;
-}
+
 .jadwal{
 	/* background-color: rebeccapurple; */
 	padding: 150px 250px;
@@ -379,7 +363,17 @@ svg text{
 }
 
 .btn:hover{
-    background: #FB3640;
+    background: #EF2D56;
+}
+
+.peep-standing{
+	-webkit-transform: scaleX(-1);
+	transform: scaleX(-1);
+	position: absolute;
+	top:50%;
+	transform: translateY(-50%);
+	right: 10px;
+	width: 310px;
 }
 
 #wrapper{
@@ -394,11 +388,14 @@ svg text{
   
 /*color classes to be applied to "#wrapper" by the js*/
 .colorOne{
-	background-color: #ED7D3A;
+	background-color: #EDE6F2;
+	color: #22252B;
 }
 .colorTwo{
-	background-color: #EF2D56;
+	background-color: #22252B;
+	color: #EDE6F2;
 }
+
 
 /* Navigation Styling Ends */
 
@@ -411,7 +408,7 @@ svg text{
 	padding-left: 0;
 	padding-right: 0;
 	padding-top: 0;
-	background-color: #312F2F;
+	background-color: #22252B;
 	width: 100%;
 	height: 100%;
 	transform: scaleY(0) skewX(0);
@@ -473,7 +470,7 @@ svg text{
 		height: 1px;
 		content: "";
 		border: none;
-		background-color: #000;
+		background-color: #22252B;
 		vertical-align: 0;
 	}
 	.dropdown-toggle::after {
@@ -485,7 +482,7 @@ svg text{
 		height: 11px;
 		content: "";
 		border: none;
-		background-color: #000;
+		background-color: #22252B;
 		vertical-align: 0;
 		transition: all 200ms linear;
 	}
@@ -507,7 +504,6 @@ svg text{
 		padding: 50px 250px;
 	}
 	.table-responsive{
-		background-color: red;
 		position: relative;
 		left: 50%;
 		transform: translateX(-43%);

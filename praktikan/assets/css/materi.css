@@ -97,7 +97,7 @@ body{
 	border-color: transparent;
 }
 .nav-link{
-	color: white !important;
+	color: #212112 !important;
 	font-weight: 500;
     transition: all 200ms linear;
 }
@@ -207,12 +207,12 @@ img {
     z-index: 0;
     margin: 2em auto;
     box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.05);
-    background-color: #363537;
+    background-color: #EDE6F2;
 }
 .page__wrapper {
     position: relative;
     min-height: 100vh;
-    background-color: #363537;
+    background-color: #EDE6F2;
 }
 
 .js-next,
@@ -321,5 +321,5 @@ h1{
     text-align: center;
     margin-bottom: 30px;
     font-weight: 700;
-    color: white;
+    color: 212112;
 }

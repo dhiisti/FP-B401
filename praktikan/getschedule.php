@@ -20,13 +20,13 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
         <link href="assets/css/style.css" rel="stylesheet">
 </head>
-<body style="background-color: #D2E4C4;">
+<body>
     <div class="loading-container">
         <div class="loading-screen"></div>
     </div>
 
     <div data-barba="wrapper">
-        <main data-barba="container" data-barba-namespace="asisten2">
+        <div class="table-responsive">
             <?php
             if (mysqli_num_rows($res)==0) {
                 echo "<div class='alert alert-danger' role='alert'>Belum ada jadwal yang terinput</div>";
@@ -76,7 +76,7 @@
             }
                 ?>
             </tbody>
-        </main>
+        </div>
     </div>
     
     <!-- Barba Core -->

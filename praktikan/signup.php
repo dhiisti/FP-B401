@@ -50,9 +50,9 @@ if (isset($_POST['signup'])) {
     <body class="log-in">
     <div class="container-canvas">
         <canvas id="canvas"></canvas>
-        <div id="myDiv">
-            <div class="container form-container col-sm-6">
-                <div class="justify-content-center">
+        <div id="myDiv d-flex align-items-center justify-content-center">
+            <div class="container form-container col-lg-6 col-xs-3">
+                <div class="">
                     <div class="">
                         <h2><img src="assets/img/4.png" 
                                 style="width: 70px;height:70px;
@@ -61,39 +61,45 @@ if (isset($_POST['signup'])) {
                                         border-radius:50%;">Registrasi</h2>
                         <hr/>
                     </div>
-                    <form action="<?php $_PHP_SELF ?>" method="POST" accept-charset="utf-8" class="form" role="form" name="form1">
-                        <div class="form-row">
-                            <div class="form-group col-md-6">
-                                <label for="inputName">Nama : </label>
-                                <input type="text" name="praktikanName" value="" class="form-control input-lg" id="inputName" required />
+                    <div class="">
+                        <form action="<?php $_PHP_SELF ?>" method="POST" accept-charset="utf-8" class="form" role="form" name="form1">
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label for="inputName">Nama : </label>
+                                    <input type="text" name="praktikanName" value="" class="form-control input-lg" id="inputName" required />
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="inputNRP">NRP :</label>
+                                    <input type="text" name="praktikanNRP" value="" class="form-control input-lg" id="inputNRP" required/>
+                                </div>
                             </div>
-                            <div class="form-group col-md-6">
-                                <label for="inputNRP">NRP :</label>
-                                <input type="text" name="praktikanNRP" value="" class="form-control input-lg" id="inputNRP" required/>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label for="inputEmail">Email :</label>
+                                    <input type="email" name="praktikanEmail" value="" class="form-control input-lg" id="inputEmail" required/>
+                                </div>
+                                <div class="form-group col-md-6">
+                                <label for="inputKelompok">Nama Kelompok :</label>
+                                <select class="select form-control" id="inputKelompok" name="praktikanKelompok" required>
+                                    <option value="Buckbeak">Buckbeak</option>
+                                    <option value="Aragog">Aragog</option>
+                                </select>
+                                <!-- <input type="text" name="praktikanKelompok" value="" class="form-control input-lg" id="inputKelompok" required/> -->
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-6">
-                                <label for="inputEmail">Email :</label>
-                                <input type="email" name="praktikanEmail" value="" class="form-control input-lg" id="inputEmail" required/>
+                            <div class="form-group">
+                                <label for="password">Password :</label>
+                                <input type="password" name="password" value="" class="form-control input-lg" id="password" required />
+                                <span id='message'></span>
                             </div>
-                            <div class="form-group col-md-6">
-                            <label for="inputKelompok">Nama Kelompok :</label>
-                            <input type="text" name="praktikanKelompok" value="" class="form-control input-lg" id="inputKelompok" required/>
+                            <div class="form-group">
+                                <label for="confirm_password">Confirm Password :</label>
+                                <input type="password" name="confirm_password" value="" class="form-control input-lg" id="confirm_password" required/>
+                                <span id='message2'></span>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="password">Password :</label>
-                            <input type="password" name="password" value="" class="form-control input-lg" id="password" required />
-                            <span id='message'></span>
-                        </div>
-                        <div class="form-group">
-                            <label for="confirm_password">Confirm Password :</label>
-                            <input type="password" name="confirm_password" value="" class="form-control input-lg" id="confirm_password" required/>
-                            <span id='message2'></span>
-                        </div>
-                        <button type="submit" name="signup" id="signup" class="btn btn-primary">Sign Up</button>
-                    </form>
+                            <button type="submit" name="signup" id="signup" class="btn btn-primary">Sign Up</button>
+                        </form>
+                    </div>
                 </div>		
             </div>
         </div>

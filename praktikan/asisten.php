@@ -24,7 +24,7 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
         <link href="assets/css/style.css" rel="stylesheet">
 </head>
-<body class="hero-anime" style="background-color: #D2E4C4;">
+<body class="hero-anime" style="background-color: #EDE6F2;">
 
     <div class="loading-container">
       <div class="loading-screen">
@@ -69,23 +69,27 @@
     </header>
 
     <div data-barba="wrapper">
-        <main data-barba="container" data-barba-namespace="asisten">
+        <main data-barba="container">
             <div class="section full-height">
-                <div class="absolute-center2">
+                <div class="absolute-center">
                     <div class="section">
                         <div class="container">
                             <div class="row">
-                                <div class="col-12">
-                                    <h2 class="ml-4">Kelompok <?php echo $userRow['praktikanKelompok'];?>, pilih asistenmu !</h2>
+                                <div class="col">
+                                    <img src="./assets/img/standing.png" class="peep-standing img-fluid">
+                                </div>
+                                <div class="col-8">
+                                    <h2 class="ml-4">Kelompok <?php echo $userRow['praktikanKelompok'];?>, pilih asistenmu!</h2>
                                     <div class="form-group col-6">
                                         <label>NRP</label>
                                         <input class="form-control" type="text" id="nrp" name="nrp" onchange="showUser(this.value)"/>
                                         <small id="emailHelp" class="form-text">Masukan NRP tanpa 0 (ex: 72118)</small>  
                                     </div>
-                                    <div class="col-xs-12 col-md-8">
+                                    <div class="col-md-8">
                                         <div id="jadwal"></div>
                                     </div>
-                                </div>	
+                                </div>
+                            </div>	
                             </div>	
                         </div>
         

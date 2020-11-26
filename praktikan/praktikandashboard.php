@@ -20,6 +20,7 @@
         <title>Welcome <?php echo $userRow['praktikanName'];?></title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
         <link rel="stylesheet" href="https://unpkg.com/simplebar@2.4.3/dist/simplebar.css"/>
@@ -65,16 +66,26 @@
     </header>
     <main id="wrapper" class="colorOne" data-simplebar>
             <div class="section full-height">
-                <div class="absolute-center">
+                <div class="absolute-center2">
                     <div class="section">
                         <div class="container">
                             <div class="row">
                                 <div class="col-12">
-                                    <svg viewBox="0 0 1350 600">
-                                        <text x="50%" y="50%" fill="transparent" text-anchor="middle">Halo, Praktikan</text>
-                                    </svg>
-                                    <p>Praktikum Rangkaian Digital B401</p>	
-                                   
+                                    <div class="mb-2">
+                                        <svg viewBox="0 0 1350 600">
+                                            <text x="50%" y="50%" fill="transparent" text-anchor="middle">Halo, <?php echo $userRow['praktikanName'];?></text>
+                                        </svg>
+                                    </div>
+                                    <div style="
+                                        position: absolute;
+                                        left: 50%;
+                                        top: 52%;
+                                        transform: translateX(-50%);
+                                        ">
+                                    <p class="mb-4" style="font-size: 1.5em;">lihat jadwalmu</p>
+                                    <a href="#startchange"><i class="fas fa-arrow-circle-down" style="font-size:48px; color:#212112; position:absolute;
+                                        left: 50%; transform: translateX(-50%);"></i></a>
+                                    </div>
                                 </div>	
                             </div>		
                         </div>		
@@ -82,7 +93,7 @@
                 </div>
             </div>
         
-            <div class="section full-height jadwal">
+            <div class="section full-height jadwal" id="startchange">
                 <div class="absolute-center">
                     <div class="section">
                         <div class="container">
@@ -95,7 +106,7 @@
                                                     <h3><b>Jadwal Praktikum Kelompok <?php echo $userRow['praktikanKelompok'];?></b></h3>
                                                 </div>
                                                 <table class="table table-borderless">
-                                                    <thead class="thead-dark">
+                                                    <thead class="thead-light">
                                                         <tr>
                                                             <th scope="col">Praktikum</th>
                                                             <th scope="col">Tanggal</th>
@@ -126,7 +137,7 @@
                                                     <h3><b>Jadwal Asistensi Kelompok <?php echo $userRow['praktikanKelompok'];?></b></h3>
                                                 </div>
                                                 <table class="table table-borderless">
-                                                    <thead class="thead-dark">
+                                                    <thead class="thead-light">
                                                         <tr>
                                                             <th scope="col">Asistensi</th>
                                                             <th scope="col">Tanggal</th>
@@ -155,7 +166,7 @@
                                     </div>
                                 </div>
                                 <div class="col">
-                                    <img src="assets/img/peep-46.png" class="peep-laptop">
+                                    <img src="assets/img/peep-46.png" class="peep-laptop img-fluid">
                                 </div>
                             </div>
                         </div>
