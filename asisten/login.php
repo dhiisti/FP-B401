@@ -59,7 +59,7 @@
 
 </head>
 
-<body style="background-color: #252B37;">
+<body style="background-color: #22252B;">
 
     <div class="container">
 

@@ -25,12 +25,6 @@
         <link href="assets/css/style.css" rel="stylesheet">
 </head>
 <body class="hero-anime" style="background-color: #EDE6F2;">
-
-    <div class="loading-container">
-      <div class="loading-screen">
-      </div>
-    </div>
-
     <header>
         <div class="navigation-wrap start-header start-style">
             <div class="container">
@@ -68,82 +62,34 @@
         </div>
     </header>
 
-    <div data-barba="wrapper">
-        <main data-barba="container">
-            <div class="section full-height">
-                <div class="absolute-center">
-                    <div class="section">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col">
-                                    <img src="./assets/img/standing.png" class="peep-standing img-fluid">
-                                </div>
-                                <div class="col-8">
-                                    <h2 class="ml-4">Kelompok <?php echo $userRow['praktikanKelompok'];?>, pilih asistenmu!</h2>
-                                    <div class="form-group col-6">
-                                        <label>NRP</label>
-                                        <input class="form-control" type="text" id="nrp" name="nrp" onchange="showUser(this.value)"/>
-                                        <small id="emailHelp" class="form-text">Masukan NRP tanpa 0 (ex: 72118)</small>  
-                                    </div>
-                                    <div class="col-md-8">
-                                        <div id="jadwal"></div>
-                                    </div>
-                                </div>
-                            </div>	
-                            </div>	
+    <div class="section full-height">
+        <div class="absolute-center2">
+            <div class="section">
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <img src="./assets/img/standing.png" class="peep-standing img-fluid">
                         </div>
-        
-                            <script>
-                                function showUser(str){			
-                                    if (str == "") {
-                                        document.getElementById("jadwal").innerHTML = "No data to be shown";
-                                        return;
-                                    } else {
-                                        if (window.XMLHttpRequest) {
-                                            // code for IE7+, Firefox, Chrome, Opera, Safari
-                                            xmlhttp = new XMLHttpRequest();
-                                        } else {
-                                            // code for IE6, IE5
-                                            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-                                        }
-        
-                                    xmlhttp.onreadystatechange = function() {
-                                        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-                                            document.getElementById("jadwal").innerHTML = xmlhttp.responseText;
-                                        }
-                                    };
-        
-                                    xmlhttp.open("GET","getschedule.php?q="+str,true);
-                                    console.log(str);
-                                    xmlhttp.send();
-        
-                                    }
-                                }
-                            </script>
-                    </div>
+                        <div class="col-8">
+                            <h2 class="ml-4">Kelompok <?php echo $userRow['praktikanKelompok'];?>, pilih asistenmu!</h2>
+                            <div class="form-group col-6">
+                                <label>NRP</label>
+                                <input class="form-control" type="text" id="nrp" name="nrp" onchange="showUser(this.value)"/>
+                                <small id="emailHelp" class="form-text">Masukan NRP tanpa 0 (ex: 72118)</small>  
+                            </div>
+                            <div class="col-md-8">
+                                <div id="jadwal"></div>
+                            </div>
+                        </div>
+                    </div>	
+                    </div>	
                 </div>
-            </div>
-        </main>
-    </div>
-    
-    <!-- Barba Core -->
-     <script src="https://unpkg.com/@barba/core"></script>
-    <!-- GSAP for animation -->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.2.4/gsap.min.js"></script>
-    <script>		
-        (function($) { "use strict";
-            
-        //Menu On Hover
-        $('body').on('mouseenter mouseleave','.nav-item',function(e){
-                if ($(window).width() > 750) {
-                    var _d=$(e.target).closest('.nav-item');_d.addClass('show');
-                    setTimeout(function(){
-                    _d[_d.is(':hover')?'addClass':'removeClass']('show');
-                    },1);
-                }
-        });	
 
-        })(jQuery); 
-	</script>
+            </div>
+        </div>
+    <script src="assets/js/index.js"></script>
+    <script src="assets/js/jadwal.js">
+        
+    </script>
 </body>
 </html>

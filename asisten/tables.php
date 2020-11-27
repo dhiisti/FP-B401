@@ -25,16 +25,10 @@
             header('Content-Description: File Transfer');
             header('Content-Type: application/octet-stream');
             header('Content-Disposition: attachment; filename=' . basename($filepath));
-            header('Expires: 0');
+            header('Expires: 1');
             header('Cache-Control: must-revalidate');
             header('Pragma: public');
-            header('Content-Length: ' . filesize('../praktikan/uploads/' . $file['name']));
             readfile('../praktikan/uploads/' . $file['name']);
-  
-            // Now update downloads count
-            $newCount = $file['downloads'] + 1;
-            $updateQuery = "UPDATE asistensi SET downloads=$newCount WHERE id=$id";
-            mysqli_query($con, $updateQuery);
             exit;
         }  
     }
@@ -220,7 +214,7 @@
                                         <th scope="col">Status</th>
                                         <th scope="col">Download</th>
                                         <th scope="col">Check</th>
-                                        <th scope="col">Action</th>
+                                        
                                     </tr>
                                     </thead>
                                     
@@ -256,8 +250,7 @@
                                                     echo "<form method='POST'>";
                                                     echo "<td><a href='../asisten/tables.php?file_id=". $asistensi['jadwalId']. "'>Download</a></td>";
                                                     echo "<td class='text-center'><input type='checkbox' name='enable' id='enable' value='".$asistensi['jadwalId']."' onclick='chkit(".$asistensi['jadwalId'].",this.checked);' ".$checked."></td>";
-                                                    echo "<td class='text-center'><a href='#' id='".$asistensi['jadwalId']."' class='delete'><i class='fas fa-trash' style='color:#292b2c;'></i></a>
-                                                    </td>";     
+                                                     
                                                 } 
                                                 echo "</tr>";
                                                 echo "</tbody>";

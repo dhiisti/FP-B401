@@ -7,7 +7,8 @@
         // header("Location: ../index.php");
     }
     $usersession = $_SESSION['praktikanSession'];
-    $res = mysqli_query($con,"SELECT * FROM praktikan WHERE praktikanNRP=".$usersession);
+    $res = mysqli_query($con," SELECT a.*, b.* FROM jadwalasisten a INNER JOIN praktikan b 
+    WHERE b.praktikanNRP=$usersession ");
     $userRow  = mysqli_fetch_array($res, MYSQLI_ASSOC);
 ?>
 
@@ -120,10 +121,9 @@
                                                         while($jadwalpraktikum = mysqli_fetch_array($result)){
                                                             echo "<tbody>";
                                                                 echo "<tr>";
-                                                                // echo "<td>" . $jadwalpraktikum['assist_NRP'] . "</td>";
                                                                 echo "<td>" . $jadwalpraktikum['praktikum'] . "</td>";
-                                                                    echo "<td>" . $jadwalpraktikum['tanggal'] . "</td>";
-                                                                    echo "<td>" . $jadwalpraktikum['jam'] . "</td>";  
+                                                                echo "<td>" . $jadwalpraktikum['tanggal'] . "</td>";
+                                                                echo "<td>" . $jadwalpraktikum['jam'] . "</td>";  
                                                         } 
                                                                 echo "</tr>";
                                                             echo "</tbody>";              
@@ -142,6 +142,7 @@
                                                             <th scope="col">Asistensi</th>
                                                             <th scope="col">Tanggal</th>
                                                             <th scope="col">Jam</th>
+                                                            <th scope="col">Upload File</th>
                                                         </tr>
                                                     </thead>
                                                     <?php
@@ -152,10 +153,10 @@
                                                         while($jadwalpraktikum = mysqli_fetch_array($result)){
                                                             echo "<tbody>";
                                                                 echo "<tr>";
-                                                                // echo "<td>" . $jadwalpraktikum['assist_NRP'] . "</td>";
                                                                 echo "<td>" . $jadwalpraktikum['praktikum'] . "</td>";
-                                                                    echo "<td>" . $jadwalpraktikum['jadwalTanggal'] . "</td>";
-                                                                    echo "<td>" . $jadwalpraktikum['mulai'] . "</td>";  
+                                                                echo "<td>" . $jadwalpraktikum['jadwalTanggal'] . "</td>";
+                                                                echo "<td>" . $jadwalpraktikum['mulai'] . "</td>";  
+                                                                echo "<td><a href='upload.php?&id=" . $jadwalpraktikum['id'] ."' class='upload' role='button'>Upload</a></td>";  
                                                         } 
                                                                 echo "</tr>";
                                                             echo "</tbody>";              
@@ -173,6 +174,7 @@
                     </div>
                 </div>                    
             </div>
+           
         </main>
 
     <script src="assets/js/index.js"></script>

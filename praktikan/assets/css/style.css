@@ -287,9 +287,9 @@ p{
 	opacity: 1;
 	transform: translate(0);
 }
-
-
-
+.upload{
+	color: #EDE6F2;
+}
 svg text{
 	stroke: #22252B;
 	font-family: 'Barriecito', cursive;
@@ -303,33 +303,6 @@ i:hover{
 	color: #EF2D56 !important;
 	transition: all .5s ease-in-out;
 }
-
-/* .mouse{
-	width: 33px;
-	height: 55px;
-	border: 4px solid black;
-	border-radius: 68px;
-	position: absolute;
-	left: 50%;
-	top: 65%;
-	transform: translate(-50% -50%);
-}
-
-.mouse::before{
-	content: "";
-	width: 10px;
-	height: 10px;
-	position: absolute;
-	top: 10px;
-	background-color: black;
-	left: 50%;
-	transform: translateX(-50%);
-	border-radius: 50%;
-	opacity: 1;
-	animation: mouse 2s infinite;
-}*/
-
-
 .jadwal{
 	/* background-color: rebeccapurple; */
 	padding: 150px 250px;
@@ -354,14 +327,11 @@ i:hover{
 
 .tabel{
 	position: absolute;
-	/* background-color: red; */
-	/* top: 180px; */
 }
 .tabel-2{
 	position: absolute;
 	/* background-color: red; */
 }
-
 .btn:hover{
     background: #EF2D56;
 }
@@ -385,8 +355,7 @@ i:hover{
 		-o-transition: background-color 700ms;
 		transition: background-color 700ms;
 }
-  
-/*color classes to be applied to "#wrapper" by the js*/
+
 .colorOne{
 	background-color: #EDE6F2;
 	color: #22252B;
@@ -395,63 +364,6 @@ i:hover{
 	background-color: #22252B;
 	color: #EDE6F2;
 }
-
-
-/* Navigation Styling Ends */
-
-/* ================= */
-
-/* Loading Screen Styling */
-
-.loading-screen {
-	position: relative;
-	padding-left: 0;
-	padding-right: 0;
-	padding-top: 0;
-	background-color: #22252B;
-	width: 100%;
-	height: 100%;
-	transform: scaleY(0) skewX(0);
-	transform-origin: top left;
-  }
-  
-  .loading-container {
-	position: fixed;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100vh;
-	overflow: hidden;
-	z-index: 1000;
-	pointer-events: none;
-  }
-  
-  /* Loading Screen Styling Ends */
-  
-  /* ================= */
-  
-  /* Heading Container Styling */
-  
-  .heading-container {
-	max-width: 800px;
-	margin:auto;
-	position: relative;
-	padding-top: 40px;
-  }
-
-  .anim2 {
-	opacity: 0;
-  -webkit-transform: translateY(20px);
-          transform: translateY(20px);
-  -webkit-transition: all .10s ease-in-out;
-  transition: all .10s ease-in-out;
-  }
-
-  .fade-in {
-	opacity: 1;
-	-webkit-transform: translateY(0);
-			transform: translateY(0);
-  }
 /* #Media
 ================================================== */
 @media (max-width: 767px) { 

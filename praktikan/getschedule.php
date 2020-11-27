@@ -21,11 +21,8 @@
         <link href="assets/css/style.css" rel="stylesheet">
 </head>
 <body>
-    <div class="loading-container">
-        <div class="loading-screen"></div>
-    </div>
 
-    <div data-barba="wrapper">
+    <div>
         <div class="table-responsive">
             <?php
             if (mysqli_num_rows($res)==0) {
@@ -78,10 +75,5 @@
             </tbody>
         </div>
     </div>
-    
-    <!-- Barba Core -->
-    <script src="https://unpkg.com/@barba/core"></script>
-    <!-- GSAP for animation -->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.2.4/gsap.min.js"></script>
 </body>
 </html>

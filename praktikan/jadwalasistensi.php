@@ -33,44 +33,30 @@
         $size = $_FILES['myfile']['size'];
         
 
-		$query = "INSERT INTO asistensi (  asistenNRP , kelompok , jadwalId , praktikum, name, size, downloads)
-        VALUES ( '$assistid', '$kelompok', '$jadwalId', '$praktikum', '$filename', $size, 0) ";
+		$query = "INSERT INTO asistensi (  asistenNRP , kelompok , jadwalId , praktikum)
+        VALUES ( '$assistid', '$kelompok', '$jadwalId', '$praktikum') ";
         $result = mysqli_query($con,$query);
 
         $query2 = "UPDATE jadwalasisten SET status = '$avail' WHERE id=$jadwalId";
         $result2 = mysqli_query($con, $query2);
-
-        // $query3 = "INSERT INTO files () VALUES ()";
-        // $result3 = mysqli_query($con, $query3);
         
-        if (!in_array($extension, ['zip', 'pdf', 'docx'])) {
-            echo "You file extension must be .zip, .pdf or .docx";
-        } else if ($_FILES['myfile']['size'] > 10000000) { // file shouldn't be larger than 10Megabyte
-            echo "File too large!";
-        } else {
-            // move the uploaded (temporary) file to the specified destination
-            if (move_uploaded_file($file, $destination)) {
-                if ( $result ){
-                    ?>
-                    <script type="text/javascript">
-                        alert('Appointment made successfully.');
-                    </script>
-                    <?php
-                    header("Location: praktikandashboard.php");
-                }else{
-                    echo mysqli_error($con);
-                    ?>
-                        <script type="text/javascript">
-                            alert('Appointment booking fail. Please try again.');
-                        </script>
-                    <?php
-                    header("Location: asisten.php");
-                }
-            } else {
-                echo "failed to upload";
-            }
+        if ( $result ){
+            ?>
+            <script type="text/javascript">
+                alert('Appointment made successfully.');
+            </script>
+            <?php
+            header("Location: praktikandashboard.php");
+        }else{
+            echo mysqli_error($con);
+            ?>
+                <script type="text/javascript">
+                    alert('Appointment booking fail. Please try again.');
+                </script>
+            <?php
+            header("Location: asisten.php");
         }
-
+           
         if($query2){
             $btn = "disable";
         }
@@ -91,62 +77,51 @@
     <link href="assets/css/style.css" rel="stylesheet">
 </head>
 <body style="background-color: #EDE6F2;">
-        <main>
-            <div class="section full-height">
-                <div class="absolute-center2">    
-                    <div class="section">
-                        <div class="container">  
-                            <div class="col-12">
-                                    <form class="form" role="form" method="POST" accept-charset="UTF-8" enctype="multipart/form-data">
-                                        <div class="card bg-light mb-3">
-                                            <div class="card-header">Praktikan</div>
-                                            <div class="card-body">
-                                                <h5 class="card-title">Nama Praktikan : <?php echo $userRow['praktikanName'] ?></h5>
-                                                <h5 class="card-title">NRP : <?php echo $userRow['praktikanNRP'] ?></h5>
-                                                <h5 class="card-title">Kelompok : <?php echo $userRow['praktikanKelompok'] ?></h5>
-                                            </div>
+    <main>
+        <div class="section full-height">
+            <div class="absolute-center2">    
+                <div class="section">
+                    <div class="container"> 
+                        <div class="col-12">
+                                <form class="form" role="form" method="POST" accept-charset="UTF-8" enctype="multipart/form-data">
+                                    <div class="card bg-light mb-3">
+                                        <div class="card-header">Praktikan</div>
+                                        <div class="card-body">
+                                            <h5 class="card-title">Nama Praktikan : <?php echo $userRow['praktikanName'] ?></h5>
+                                            <h5 class="card-title">NRP : <?php echo $userRow['praktikanNRP'] ?></h5>
+                                            <h5 class="card-title">Kelompok : <?php echo $userRow['praktikanKelompok'] ?></h5>
                                         </div>
+                                    </div>
 
-                                        <div class="card bg-light mb-3">
-                                            <div class="card-header">Tanggal Asistensi</div>
-                                            <div class="card-body">
-                                                <h5 class="card-title">Hari : <?php echo $userRow['jadwalHari'] ?></h5>
-                                                <h5 class="card-title">Tanggal : <?php echo $userRow['jadwalTanggal'] ?></h5>
-                                                <h5 class="card-title">Jam : <?php echo $userRow['mulai'] ?> - <?php echo $userRow['selesai'] ?></h5>
-                                                <h5 class="card-title">Asisten : <?php echo $userRow['asistenNRP'] ?></h5>
-                                            </div>
+                                    <div class="card bg-light mb-3">
+                                        <div class="card-header">Tanggal Asistensi</div>
+                                        <div class="card-body">
+                                            <h5 class="card-title">Hari : <?php echo $userRow['jadwalHari'] ?></h5>
+                                            <h5 class="card-title">Tanggal : <?php echo $userRow['jadwalTanggal'] ?></h5>
+                                            <h5 class="card-title">Jam : <?php echo $userRow['mulai'] ?> - <?php echo $userRow['selesai'] ?></h5>
+                                            <h5 class="card-title">Asisten : <?php echo $userRow['asistenNRP'] ?></h5>
                                         </div>
-                                        
-                                        <div class="form-group">
-                                            <label for="praktikum" class="control-label">LAB ke :</label>
-                                            <select class="select form-control" id="praktikum" name="praktikum" required style="font-size:1em;">
-                                                    <option value="LAB 1">LAB 1</option>
-                                                    <option value="LAB 2">LAB 2</option>
-                                                    <option value="LAB 3">LAB 3</option>
-                                                    <option value="LAB 4">LAB 4</option>
-                                                    <option value="LAB 5">LAB 5</option>
-                                                    
-                                            </select>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="praktikum" class="control-label">Upload File</label>
-                                            <input type="file" name="myfile">
-                                            <small id="emailHelp" class="form-text">*jenis file  zip, rar, dan pdf</small> 
-                                        </div>
-                                        <button type="submit" class="btn btn-primary" name="asistensi" jd="submit" value="Make Appointment" style="width: 100px; height:30px; font-size: 1em;">Submit</button>
-                                    </form>
-                                
-                            </div> 
-                        </div>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label for="praktikum" class="control-label">LAB ke :</label>
+                                        <select class="select form-control" id="praktikum" name="praktikum" required style="font-size:1em;">
+                                                <option value="LAB 1">LAB 1</option>
+                                                <option value="LAB 2">LAB 2</option>
+                                                <option value="LAB 3">LAB 3</option>
+                                                <option value="LAB 4">LAB 4</option>
+                                                <option value="LAB 5">LAB 5</option>
+                                                
+                                        </select>
+                                    </div>
+                                    
+                                    <button type="submit" class="btn btn-primary" name="asistensi" jd="submit" value="Make Appointment" style="width: 100px; height:30px; font-size: 1em;">Submit</button>
+                                </form>
+                        </div> 
                     </div>
                 </div>
             </div>
-        </main>
-    </div>
-
-    <!-- Barba Core -->
-    <script src="https://unpkg.com/@barba/core"></script>
-    <!-- GSAP for animation -->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.2.4/gsap.min.js"></script>
+        </div>
+    </main>
 </body>
 </html>

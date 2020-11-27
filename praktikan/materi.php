@@ -105,10 +105,6 @@
     
     
     <script src="assets/js/index.js"></script>
-    <!-- Barba Core -->
-    <script src="https://unpkg.com/@barba/core"></script>
-    <!-- GSAP for animation -->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.2.4/gsap.min.js"></script>
     <script src="./assets/js/materi.js"></script>
     </body>
 </html>
